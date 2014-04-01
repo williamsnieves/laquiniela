@@ -39,6 +39,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'calendars',
     'teams',
+    'footballpools',
+    'south',
+    'rest_framework',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (
