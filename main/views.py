@@ -16,7 +16,7 @@ def home(request):
 @login_required
 def test_quiniela(request):
 	social = request.user.social_auth
-	print(social.get(provider='facebook').extra_data['birthday'])
+	#print(social.get(provider='facebook').extra_data['birthday'])
 	#profile = get_user()
 	#print(profile)
 	return render(request, 'test.html', {'username': request.user.username})	

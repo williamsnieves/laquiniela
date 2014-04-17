@@ -107,18 +107,7 @@ DATABASES = {
 
 # REST FRAMEWORK
 
-REST_FRAMEWORK = {
-    # Use hyperlinked styles by default.
-    # Only used if the `serializer_class` attribute is not set on a view.
-    'DEFAULT_MODEL_SERIALIZER_CLASS':
-        'rest_framework.serializers.HyperlinkedModelSerializer',
 
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -182,7 +171,12 @@ LOGIN_URL = '/login/'
 # API KEY SOCIAL LOGIN
 
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 SOCIAL_AUTH_RAISE_EXCEPTIONS = True
 
@@ -196,13 +190,13 @@ SOCIAL_AUTH_TWITTER_SECRET = 'GzN3ejudPZjExtRGy5HTuFwcKZAajzoBV4ds8OeaNyCH1NYyZj
 
 SOCIAL_AUTH_FACEBOOK_KEY = '826899150657630'
 SOCIAL_AUTH_FACEBOOK_SECRET = '5547d055f6be2728b521e48ec2d89c46'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','user_friends','user_birthday']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('birthday', 'birthday'),('friends','friends'),('picture','picture')]
+#SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('birthday', 'birthday'),('friends','friends'),('picture','picture')]
 
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'picture'}
+"""SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'picture'}
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'friends'}
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'birthday'}
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'birthday'}"""
 
 #SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'picture','fields' : 'birthday',}
 

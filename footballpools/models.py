@@ -7,7 +7,7 @@ import datetime
 class FootballPool(models.Model):
 	id = models.AutoField(primary_key=True)
 	cod_qnl = models.CharField(max_length=3)
-	user_qnl = models.ForeignKey(User)
+	user_qnl = models.ForeignKey('auth.User', related_name='quinielas')
 	group_qnl = models.CharField(max_length=1)
 	date_qnl = models.DateField()
 	name_qnl = models.CharField(max_length=200)
