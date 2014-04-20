@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'calendars',
     'teams',
     'footballpools',
+    'footballpoolsusers',
     'south',
     'rest_framework',
     'social.apps.django_app.default',
