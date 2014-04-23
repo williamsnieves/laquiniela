@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
 class FootballPoolSerializer(serializers.ModelSerializer):
 
 	#user_qnl = serializers.RelatedField(read_only=True)
-	user_qnl = serializers.Field(source='user_qnl.username')
+	#user_qnl = serializers.Field(source='user_qnl.username')
 
 	class Meta:
 		model = FootballPool

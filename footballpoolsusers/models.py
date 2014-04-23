@@ -9,6 +9,3 @@ class FootballPoolUser(models.Model):
 	cod_qnl = models.CharField(max_length=50)
 	#user_qnl = models.ForeignKey('auth.User', related_name='quinielas')
 	username = models.CharField(max_length=50)
-
-	def __str__(self):
-		return self.name_qnl

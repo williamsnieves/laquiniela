@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, connection
 from django.contrib.auth.models import User
 from django.utils import timezone
 import datetime
@@ -6,9 +6,9 @@ import datetime
 
 class FootballPool(models.Model):
 	id = models.AutoField(primary_key=True)
-	cod_qnl = models.CharField(max_length=15)
+	cod_qnl = models.CharField(max_length=50)
 	#user_qnl = models.ForeignKey('auth.User', related_name='quinielas')
-	user_qnl = models.CharField(max_length=15)
+	user_qnl = models.CharField(max_length=50)
 	group_qnl = models.CharField(max_length=1)
 	date_qnl = models.DateField()
 	name_qnl = models.CharField(max_length=200)
@@ -20,6 +20,68 @@ class FootballPool(models.Model):
 
 	def __str__(self):
 		return self.name_qnl
+
+class ViewMatchesQnl:
+	def getMatches(self):
+		cursor = connection.cursor()
+		cursor.execute("""
+			SELECT * FROM vw_match_qnl
+			""")
+		matches_list = []
+		finalmatches_list = []
+		matches_dict = {}
+
+		for row in cursor.fetchall():
+			m = row
+			matches_list.append(m)
+
+		for i in range(len(matches_list)):
+			matches_dict = dict(group_match=matches_list[i][0],cod_match=matches_list[i][1],date_match=matches_list[i][2],name_match=matches_list[i][3],team_a_match=matches_list[i][4],
+								jj=matches_list[i][5],jg=matches_list[i][6],je=matches_list[i][7],jp=matches_list[i][7],gf=matches_list[i][9],gc=matches_list[i][10],
+								dif=matches_list[i][11],pts=matches_list[i][12])
+			finalmatches_list.append(matches_dict)
+
+
+		return finalmatches_list
+
+class ViewPositionQnl:
+	def  getPositions(self):
+		cursor = connection.cursor()
+		cursor.execute("SELECT * FROM vw_position_qnl")
+		position_list = []
+		final_list = []
+		position_dict = {}
+		for row in cursor.fetchall():
+			p = row
+			position_list.append(p)
+
+		for i in range(len(position_list)):
+			position_dict = dict(group=position_list[i][0],team=position_list[i][1],jj=position_list[i][2],jg=position_list[i][3],je=position_list[i][4],
+									jp=position_list[i][5],gf=position_list[i][6],gc=position_list[i][7],dif=position_list[i][8],pts=position_list[i][9])
+			final_list.append(position_dict)	
+
+		return final_list
+		
+	def getPositionByGroup(self, group=""):
+		cursor = connection.cursor()
+		cursor.execute("SELECT * FROM vw_position_qnl grupo WHERE grupo.group='"+group+"'")
+		position_list = []
+		final_list = []
+		position_dict = {}
+
+		for row in cursor.fetchall():
+			p = row
+			position_list.append(p)
+
+		for i in range(len(position_list)):
+			position_dict = dict(group=position_list[i][0],team=position_list[i][1],jj=position_list[i][2],jg=position_list[i][3],je=position_list[i][4],
+									jp=position_list[i][5],gf=position_list[i][6],gc=position_list[i][7],dif=position_list[i][8],pts=position_list[i][9])
+			final_list.append(position_dict)
+
+
+		return final_list
+
+
 
 
 
