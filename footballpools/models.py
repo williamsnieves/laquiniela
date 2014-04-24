@@ -36,8 +36,8 @@ class ViewMatchesQnl:
 			matches_list.append(m)
 
 		for i in range(len(matches_list)):
-			matches_dict = dict(group_match=matches_list[i][0],cod_match=matches_list[i][1],date_match=matches_list[i][2],name_match=matches_list[i][3],team_a_match=matches_list[i][4],
-								jj=matches_list[i][5],jg=matches_list[i][6],je=matches_list[i][7],jp=matches_list[i][7],gf=matches_list[i][9],gc=matches_list[i][10],
+			matches_dict = dict(cod_qnl=matches_list[i][0],group_match=matches_list[i][1],date_match=matches_list[i][2].strftime("%Y-%m-%d"),name_match=matches_list[i][3],team_a_match=matches_list[i][4],
+								jj=matches_list[i][5],jg=matches_list[i][6],je=matches_list[i][7],jp=matches_list[i][8],gf=matches_list[i][9],gc=matches_list[i][10],
 								dif=matches_list[i][11],pts=matches_list[i][12])
 			finalmatches_list.append(matches_dict)
 
@@ -56,13 +56,13 @@ class ViewPositionQnl:
 			position_list.append(p)
 
 		for i in range(len(position_list)):
-			position_dict = dict(group=position_list[i][0],team=position_list[i][1],jj=position_list[i][2],jg=position_list[i][3],je=position_list[i][4],
-									jp=position_list[i][5],gf=position_list[i][6],gc=position_list[i][7],dif=position_list[i][8],pts=position_list[i][9])
+			position_dict = dict(cod_qnl=position_list[i][0],group=position_list[i][1],team=position_list[i][2],jj=position_list[i][3],jg=position_list[i][4],je=position_list[i][5],
+									jp=position_list[i][6],gf=position_list[i][7],gc=position_list[i][8],dif=position_list[i][9],pts=position_list[i][10])
 			final_list.append(position_dict)	
 
 		return final_list
 		
-	def getPositionByGroup(self, group=""):
+	def getPositionByGroup(self, group="",user=None, cod_qnl=None):
 		cursor = connection.cursor()
 		cursor.execute("SELECT * FROM vw_position_qnl grupo WHERE grupo.group='"+group+"'")
 		position_list = []
@@ -74,8 +74,8 @@ class ViewPositionQnl:
 			position_list.append(p)
 
 		for i in range(len(position_list)):
-			position_dict = dict(group=position_list[i][0],team=position_list[i][1],jj=position_list[i][2],jg=position_list[i][3],je=position_list[i][4],
-									jp=position_list[i][5],gf=position_list[i][6],gc=position_list[i][7],dif=position_list[i][8],pts=position_list[i][9])
+			position_dict = dict(cod_qnl=position_list[i][0],group=position_list[i][1],team=position_list[i][2],jj=position_list[i][3],jg=position_list[i][4],je=position_list[i][5],
+									jp=position_list[i][6],gf=position_list[i][7],gc=position_list[i][8],dif=position_list[i][9],pts=position_list[i][10])
 			final_list.append(position_dict)
 
 

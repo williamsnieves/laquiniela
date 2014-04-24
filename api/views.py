@@ -8,10 +8,11 @@ from django.http import HttpResponse
 import json
 
 from calendars.models import ViewPosition
-from footballpools.models import FootballPool
+from footballpools.models import FootballPool, ViewPositionQnl, ViewMatchesQnl
 from api.serializers import CalendarSerializer
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
+from django.http import Http404
 
 # Create your views here.
 
@@ -73,10 +74,21 @@ def quiniela(request):
 		user = request.user
 
 		datos = json.loads(request.body.decode())
-		print(datos['goles_a'])
-		quiniela = serializers.deserialize('json',FootballPool.objects.filter(group_qnl=grupo).filter(cod_qnl=codigo_qnl).filter(user_qnl=user).update(goals_a_qnl=3,goals_b_qnl=2))
+		if not datos:
+			return HttpResponse(json.dumps({"error" : "no existen datos"}), content_type="application/json",status=400)
 
-		return HttpResponse("DONE")
+		#quiniela = serializers.deserialize('json',FootballPool.objects.filter(group_qnl=grupo).filter(cod_qnl=codigo_qnl).filter(user_qnl=user).update(goals_a_qnl=3,goals_b_qnl=2))
+		result = datos['goles_a'] + "-" + datos['goles_b']
+		try:
+			FootballPool.objects.filter(group_qnl=grupo).filter(cod_qnl=codigo_qnl).filter(user_qnl=user).update(goals_a_qnl=datos['goles_a'],goals_b_qnl=datos['goles_b'],result_qnl=result)
+			return HttpResponse(json.dumps({"success" : "true"}), content_type="application/json",status=200)
+		except FootballPool.DoesNotExist:
+			raise Http404
+			return HttpResponse(json.dumps({"error" : "error"}), content_type="application/json",status=404)
+		except DatabaseError as e:
+			return HttpResponse(json.dumps({"error" : "database-error"}), content_type="application/json")
+			#return HttpResponse(json.dumps({"error" : "error"}), content_type="application/json",status=404)
+
 
 	if request.method == 'GET':
 		grupo = request.GET.get('grupo')
