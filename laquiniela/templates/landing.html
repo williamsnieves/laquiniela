@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	<header>
+		<section class="row">
+			<section class="large-6 columns">
+				<h1>Faltan 50 días</h1>
+			</section>
+			<section class="large-6 columns">
+				<ul class="social-list">
+					<li>facebook</li>
+					<li>twitter</li>
+				</ul>
+			</section>			
+		</section>
+	</header>
+	<section class="row">
+		<section class="large-9 columns" >
+			<div style="position:relative; margin-top:10em">
+				<figure class="logo-quiniela">
+					<img src="{% static 'img/logo_quiniela.png' %}" alt="log quiniela">
+				</figure>
+
+			</div>
+		</section>
+		<section class="large-3 columns">
+			<div style="position:relative; margin-top:10em ">
+				<figure class="logo-quiniela">
+					<img src="{% static 'img/bg_login.png' %}" alt="login">
+				</figure> 
+			</div>
+		</section>
+	</section>
+{% endblock content %}

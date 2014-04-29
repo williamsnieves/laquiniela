@@ -5,9 +5,11 @@ from django.contrib.auth.models import User
 from footballpools.models import FootballPool
 
 
-def enter(request):
+def login(request):
 	return render(request, 'login.html')
 
+def init_app(request):
+	return render(request, 'landing.html')
 
 @login_required
 def home(request):

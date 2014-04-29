@@ -10,6 +10,7 @@ from calendars import views
 urlpatterns = patterns('',
 	url(r'^calendario/$', views.CalendarList.as_view()),
     url(r'^calendario/(?P<pk>[0-9]+)$', views.CalendarDetail.as_view()),    
+    url(r'^calendario/(?P<city_match>.+)/$', views.CalendarList.as_view()),
 )
 
 

@@ -10,6 +10,9 @@ class Team(models.Model):
 	country_team = models.CharField(max_length=200)
 	confed_team = models.CharField(max_length=200)
 	group_team = models.CharField(max_length=10)
+	description = models.CharField(max_length=1000)
+	cant_titles = models.IntegerField()
+	mundiales = models.IntegerField()
 
 	def __str__(self):
 		return self.name_team

@@ -18,6 +18,10 @@ class CalendarList(generics.ListAPIView):
 	queryset = Calendar.objects.all()
 	serializer_class = CalendarSerializer
 
+	def get_queryset(self):
+		city = self.kwargs['city_match']
+		return Calendar.objects.filter(city_match=city)
+
 class CalendarDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Calendar.objects.all()
 	serializer_class = CalendarSerializer
