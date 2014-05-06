@@ -1,34 +1,122 @@
-{% extends "base.html" %}
+{% extends "baselanding.html" %}
 {% load static %}
 {% block content %}
-	<header>
+	<header id="landing-header">
 		<section class="row">
 			<section class="large-6 columns">
-				<h1>Faltan 50 días</h1>
+				<h1 id="clock"></h1>				
 			</section>
 			<section class="large-6 columns">
 				<ul class="social-list">
-					<li>facebook</li>
-					<li>twitter</li>
+					<li><a href="" class="icon-facebook"></a></li>
+					<li><a href="" class="icon-twitter"></a></li>
 				</ul>
 			</section>			
 		</section>
 	</header>
-	<section class="row">
-		<section class="large-9 columns" >
-			<div style="position:relative; margin-top:10em">
-				<figure class="logo-quiniela">
-					<img src="{% static 'img/logo_quiniela.png' %}" alt="log quiniela">
-				</figure>
+	<section class="page1-login">
+		<section class="row">
+			<section class="large-8 columns" >
+				<div class="margen-superior">
+					<figure class="logo-quiniela">
+						<img src="{% static 'img/logo_quiniela.png' %}" alt="log quiniela">
+					</figure>
 
-			</div>
-		</section>
-		<section class="large-3 columns">
-			<div style="position:relative; margin-top:10em ">
-				<figure class="logo-quiniela">
-					<img src="{% static 'img/bg_login.png' %}" alt="login">
-				</figure> 
-			</div>
-		</section>
+				</div>
+			</section>
+			<section class="large-4 columns">
+				<div class="margen-superior login-content">
+					<figure>
+						<img src="{% static 'img/bg_login.png' %}" alt="login">						
+					</figure>
+					<figure class="btn-twitter">
+						<a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info btn-lg" role="button"><img src="{% static 'img/twitlogin.png' %}" alt=""/></a>						
+					</figure>
+					<figure class="btn-facebook">
+						<a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-lg" role="button"><img src="{% static 'img/fblogin.png' %}" alt=""/></a>
+					</figure>
+						
+				</div>
+			</section>
+		</section>	
 	</section>
+	<section class="page2-hand">
+		<section class="row">
+			<section class="large-10 columns" >
+					<figure class="hand-llena">
+						<img src="{% static 'img/hand.png' %}" alt="log quiniela">
+					</figure>
+					<figure class="numbers-quiniela">
+						<img src="{% static 'img/numbers.png' %}" alt="numbers quiniela">
+					</figure>
+			</section>
+		</section>	
+	</section>
+	<section class="page3-numbers">
+		<section class="row">
+			
+				<div>
+					<figure class="jugador-quiniela">
+						<img src="{% static 'img/jugador.png' %}" alt="log quiniela">
+					</figure>
+
+					<figure class="ball-jugador-quiniela">
+						<img src="{% static 'img/balon.png' %}" alt="log quiniela">
+					</figure>
+					
+					<figure class="numero1-quiniela">
+						<img src="{% static 'img/numero1.png' %}" alt="log quiniela">
+					</figure>
+					
+					<figure class="numero2-quiniela">
+						<img src="{% static 'img/numero2.png' %}" alt="log quiniela">
+					</figure>
+
+				</div>
+		
+		</section>	
+	</section>
+
+	<section class="page4-portero">
+		<section class="row">
+				<div>
+					<figure class="portero-quiniela">
+						<img src="{% static 'img/portero.png' %}" alt="log quiniela">
+					</figure>
+					<figure class="ball-portero-quiniela">
+						<img src="{% static 'img/ball_portero.png' %}" alt="log quiniela">
+					</figure>
+					<figure class="numero1-portero-quiniela">
+						<img src="{% static 'img/uno_portero.png' %}" alt="log quiniela">
+					</figure>
+					
+					<figure class="numero2-portero-quiniela">
+						<img src="{% static 'img/dos_portero.png' %}" alt="log quiniela">
+					</figure>
+
+				</div>
+		</section>	
+	</section>
+
+	<section class="page5-portero">
+		<section class="row-fluid">			
+				<div>
+					<figure class="copa-quiniela">
+						<img src="{% static 'img/copa_gente.png' %}" alt="log quiniela">
+					</figure>
+				</div>
+			
+		</section>
+		
+		<footer class="grama-content">
+			<figure class="logo-quiniela">
+				 <img src="{% static 'img/grama.png' %}" alt="log quiniela">
+			</figure>
+		</footer>	
+	</section>
+
+	<script src="{% static 'js/mobilescroll.init.js' %}"></script>
+	<script src="{% static 'js/landing.js' %}"></script>			
+				
+	
 {% endblock content %}

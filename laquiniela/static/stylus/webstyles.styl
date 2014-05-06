@@ -1,11 +1,12 @@
 @import 'normalize.styl'
+@import 'webfonts.styl'
 
 azul_claro = #00a7ff
-
+gris_claro = #878787
+verde_claro = #cfff09
 
 body
 	font-size 16px
-	background url('../img/bg_landing.png')
 
 header
 	background azul_claro
@@ -16,8 +17,281 @@ figure
 	margin 0
 	padding 0
 
+#clock
+	color white
+	margin 0 1em 0 2em
+
+#landing-header
+	overflow hidden
+	position fixed
+	width 100%
+	z-index 9999999
+
+.margen-superior
+	position relative
+	margin-top 10em
+
+.login-content
+	position relative
+
+.logo
+	margin-right 5em
+	width 50%
+
+.btn-twitter
+	position absolute
+	width 50%
+	top 26em
+	left 4.5em
+
+.btn-facebook
+	position absolute
+	width 50%
+	top 28em
+	left 4.5em
+
+.btn-menu
+	display block
+	position absolute
+	background verde_claro
+	color gris_claro
+	padding 0.5em
+	text-align center
+	width 18%
+	right 0
+	margin-right 2em
+	margin-top -1.2em
+	-webkit-transform skewX(-30deg)
+
+.copa-quiniela img
+	width 100%
+	position absolute
+	bottom 5px
+
+.numbers-quiniela
+	position absolute
+	top 14em
+	left 10em
+	width 96%
+
+.hand-vacia
+	bottom -978px
+	position absolute
+
+.hand-llena
+	bottom -978px
+	position absolute
+
+.jugador-quiniela
+	position absolute
+	top 40%
+	width 40%
+
+.ball-jugador-quiniela
+	position absolute
+	left 0
+
+.numero1-quiniela
+	position absolute
+	left 71em
+	top 38em
+
+.numero2-quiniela
+	position absolute
+	left 47em
+	top 14em
+
+.portero-quiniela
+	position absolute
+	top 30%
+	width 40%
+	z-index 9999
+
+.ball-portero-quiniela
+	position absolute
+	top 20%
+	left 67em
+
+.numero1-portero-quiniela
+	position absolute
+	left 81em
+	top 15em
+
+.numero2-portero-quiniela
+	position absolute
+	left 75em
+	top 24em
+
+#menu-dash ul
+	list-style none
+	background rgba(0,167,255,0.7)
+	position absolute
+	//border 1px solid red 
+	width 18%
+	right 0
+	margin-right 2.5em
+	margin-top 0.8em
+
+#menu-dash ul li
+	padding 0.2em
+	border-bottom 1px dotted white
+	color white
+	text-align center
+
+#menu-dash ul li:last-child
+	border-bottom none
+
+#menu-dash ul li a
+	color white
+	
+
+.grama-content
+	position absolute
+	bottom 0	
+
+.page1-login
+	background url('../img/bg_landing.png')
+	background-repeat no-repeat 
+	background-size cover
+	height 979px
+	width 100%
+
+.page2-hand
+	background url('../img/bghand.png')
+	background-repeat no-repeat 
+	background-size cover
+	height 979px
+	width 100%
+	position relative
+
+.page3-numbers
+	background url('../img/resplandor.png')
+	background-repeat no-repeat 
+	background-size cover
+	height 979px
+	width 100%
+	position relative
+
+.page4-portero
+	background url('../img/bg_portero.png')
+	background-repeat no-repeat 
+	background-size cover
+	height 979px
+	width 100%
+	position relative
+
+.page5-portero
+	background url('../img/bghand.png')
+	background-repeat no-repeat 
+	background-size cover
+	height 979px
+	width 100%
+	position relative
+
+
+.quiniela-header section figure
+	margin: 1em
+
+.quiniela-header section .menu-quiniela
+	position relative	
+
+.quiniela-header section .menu-quiniela ul
+	list-style none
+	margin 0
+
+.quiniela-header section .menu-quiniela ul li
+	display inline-block
+	padding 1em
+	color white
+
+	
+
+.quiniela-header section .menu-quiniela ul li a:hover
+	color gris_claro
+	display block
+	padding 0.5em
+	background verde_claro
+	-webkit-transform skewX(-30deg)
+
+.quiniela-header section .menu-quiniela ul li:hover > ul.submenu
+	display block
+
+#mundial
+	left 10em
+	
+
+.quiniela-header section .menu-quiniela ul li ul.submenu
+	display none
+	background verde_claro
+	position absolute
+	top 4.5em
+	left 0em
+	-webkit-transform skewX(-30deg)
+
+.quiniela-header section .menu-quiniela ul li ul li
+	display inline-block
+	padding 0 1em 0 1em
+
+
+.quiniela-header section .menu-quiniela ul li ul li a
+	color gris_claro
+	-webkit-transform skewX(30deg)
+
+/*style="background : yellow; position: absolute;  top: 30px; left: 0; width: 100px; "*/
+
+.quiniela-header section .menu-quiniela ul li a
+	color white
+	padding 0.5em
+	display block
+
 .social-list
 	list-style none
+	margin: 0.4em 0 0 17em
 
 .social-list li
 	display inline-block
+	padding 0.2em 0.5em 0 0.5em
+
+.header-content
+	position relative
+
+.user-content
+	position absolute
+	top 0
+	right 0
+	overflow hidden
+
+.user-content a
+	display block
+	position relative
+	color white
+	top 1em
+
+.left
+	float left
+
+.username
+	color white
+	margin 1em 0 0 0
+	font-size 1.5em
+	font-weight bold
+	position relative
+	top 0.5em
+
+.separator
+	display inline-block
+	width 0
+	height 1em
+	border-left 1px solid #fff
+	border-right 1px solid #fff
+
+.full-section
+	background #ccc
+	width 100%
+	height 100%
+
+
+
+
+
+

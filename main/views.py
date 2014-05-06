@@ -12,6 +12,14 @@ def init_app(request):
 	return render(request, 'landing.html')
 
 @login_required
+def dashboard(request):
+	return render(request, 'app.html', {'username': request.user.username})
+
+@login_required
+def curiosidades(request):
+	return render(request, 'curiosidades.html', {'username': request.user.username})
+
+@login_required
 def home(request):
 	return render(request, 'index.html', {'username': request.user.username})
 
@@ -27,4 +35,4 @@ def test_quiniela(request):
 
 def log_out(request):
     logout(request)
-    return redirect('enter')
+    return redirect('/')

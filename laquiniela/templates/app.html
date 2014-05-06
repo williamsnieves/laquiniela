@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block menu %}
+	<section class="header-content row">
+		<figure class="logo">
+			<img src="{% static 'img/logo.png' %}" width="154" height="40" alt="">
+		</figure>
+		<div class="user-content">
+				<figure class="left">
+					<img style="width: 50px; height=50px; border-radius: 50%" src="http://graph.facebook.com/{{user.username}}/picture?type=large" alt="">
+				</figure>
+				<span class="username">{{username}}</span>
+				<a href="{% url 'log-out' %}">Logout</a>
+		</div>
+		<a class="btn-menu" href="#"><span>Menu</span></a>
+		<nav id="menu-dash">
+			<ul>
+				<li><a href="/dashboard/">Inicio</a></li>
+				<li><a href="/curiosidades/">Curiosidades</a></li>
+				<li><a href="/mundial/">Brasil 2014</a></li>
+				<li><a href="/posiciones/">Posiciones</a></li>
+				<li><a href="/equipos/">Equipos</a></li>
+				<li><a href="/quiniela/">Quiniela</a></li>
+			</ul>
+		</nav>
+	</section>	
+{% endblock menu %}	
+{% block content %}
+	<figure>
+		<img src="{% static 'img/dashboard.png' %}" alt="">
+	</figure>
+	<section>
+		<p>contenido</p>
+	</section>
+{% endblock content %}

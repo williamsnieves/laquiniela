@@ -1,0 +1,85 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+	<title>Social Login</title>
+	<!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">-->
+	<link rel="stylesheet" type="text/css" href="{% static 'foundation/css/foundation.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/webstyles.css' %}" />
+	
+</head>
+<body>
+	<header class="quiniela-header">
+		<section class="row">
+			<nav class="menu-quiniela">
+				<ul>
+					<li><a href="/dashboard/">Inicio</a></li>
+					<span class="separator"></span>
+					<li><a href="/curiosidades/">Curiosidades</a>
+						<ul class="submenu">
+				            <li>
+				                <a href="#">Mundiales pasados</a>
+				            </li>
+				            <li>
+				                <a href="#">Jugadores Destacados</a>
+				            </li>
+				            <li>
+				                <a href="#">Equipos Historicos</a>
+				            </li>
+				            <li>
+				                <a href="#">Balon</a>
+				            </li>
+				            <li>
+				                <a href="#">Palmares</a>
+				            </li>
+        				</ul>
+					</li>
+					<span class="separator"></span>
+					<li><a href="/mundial/">Brasil 2014</a>
+						<ul class="submenu" id="mundial">
+				            <li>
+				                <a href="#">Sedes/Estadios</a>
+				            </li>
+				            <li>
+				                <a href="#">Equipos</a>
+				            </li>
+        				</ul>
+					</li>
+					<span class="separator"></span>
+					<li><a href="/posiciones/">Posiciones</a></li>
+					<span class="separator"></span>
+					<li><a href="/quiniela/">Quiniela</a></li>
+				</ul>
+			</nav>
+		</section>
+		
+	</header>
+
+	<section class="full-section">
+		<section class="row">
+			{% block content %}
+	
+			{% endblock content %}	
+		</section>	
+	</section>
+	
+	
+
+
+	<script src="{% static 'js/lib/underscore.js' %}"></script>
+	<script src="{% static 'js/lib/jquery-1.11.0.js' %}"></script>
+	<script src="{% static 'js/lib/backbone.js' %}"></script>
+	<script src="{% static 'js/lib/handlebars-v1.3.0.js' %}"></script>
+    <script src="{% static 'foundation/js/foundation.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/routers/router.js' %}"></script>
+    <script src="{% static 'js/views/dashboard.js' %}"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+</body>
+</html>
