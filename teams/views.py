@@ -13,9 +13,28 @@ from rest_framework import permissions
 
 # Create your views here.
 
+class EquipoList(generics.ListAPIView):
+	queryset = Team.objects.all()
+	serializer_class = TeamSerializer
+
+	def get_queryset(self):
+		equipo = self.kwargs['equipo']
+		return Team.objects.filter(name_team=equipo)
+
+	
+
 class TeamList(generics.ListAPIView):
 	queryset = Team.objects.all()
 	serializer_class = TeamSerializer
+	
+	def get_queryset(self):
+		queryset = Team.objects.all()
+		grupo = self.request.QUERY_PARAMS.get('grupo', None)
+
+		if grupo is not None:
+			queryset = queryset.filter(group_team=grupo)
+
+		return queryset
 
 class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Team.objects.all()

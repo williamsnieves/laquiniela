@@ -8,8 +8,9 @@ from teams import views
 # Routers provide an easy way of automatically determining the URL conf.
 
 urlpatterns = patterns('',
-	url(r'^equipos/$', views.TeamList.as_view()),
-    url(r'^equipos/(?P<pk>[0-9]+)$', views.TeamDetail.as_view()),    
+	url(r'^api/equipos/$', views.TeamList.as_view()),
+    url(r'^api/equipos/(?P<pk>[0-9]+)$', views.TeamDetail.as_view()),
+    url(r'^api/equipos/(?P<equipo>.+)/$', views.EquipoList.as_view()), 
 )
 
 

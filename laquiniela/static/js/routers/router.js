@@ -5,27 +5,18 @@ Quiniela.Router = Backbone.Router.extend({
 		'mundial/' : 'mundialHandler',
 		'posiciones/' : 'posicionesHandler',
 		'equipos/'  : 'equiposHandler',
+		'estadios/'  : 'estadiosHandler',
 		'quiniela/' : 'quinielaHandler'
+	},
+
+	equiposHandler : function(){
+		var grupos = new Quiniela.Views.Teams()
+		console.log(grupos)
+	},
+
+	estadiosHandler : function(){
+		$(".full-section").css("background","url(../static/img/bghand.png) 100% 100%")
+		var grupos = new Quiniela.Views.Stadiums()
 	}
 
-})
-
-var app_router = new Quiniela.Router;
-
-app_router.on("route : dashboardHandler",function(){
-	console.log("test");
-})
-
-app_router.on("route : curiosidadesHandler",function(){
-	console.log("curiosidades");
-})
-
-app_router.on("route : mundialHandler",function(){
-	console.log("mundial");
-})
-
-
-Backbone.history.start({
-	pushState : true,
-	root : "/"
 })

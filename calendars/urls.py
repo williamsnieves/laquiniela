@@ -8,9 +8,9 @@ from calendars import views
 # Routers provide an easy way of automatically determining the URL conf.
 
 urlpatterns = patterns('',
-	url(r'^calendario/$', views.CalendarList.as_view()),
-    url(r'^calendario/(?P<pk>[0-9]+)$', views.CalendarDetail.as_view()),    
-    url(r'^calendario/(?P<city_match>.+)/$', views.CalendarList.as_view()),
+	url(r'^api/calendario/$', views.CalendarList.as_view()),
+    url(r'^api/calendario/(?P<pk>[0-9]+)$', views.CalendarDetail.as_view()),    
+    url(r'^api/calendario/(?P<city_match>.+)/$', views.CalendarList.as_view()),
 )
 
 

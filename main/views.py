@@ -16,8 +16,12 @@ def dashboard(request):
 	return render(request, 'app.html', {'username': request.user.username})
 
 @login_required
-def curiosidades(request):
-	return render(request, 'curiosidades.html', {'username': request.user.username})
+def equipos(request):
+	return render(request, 'equipos.html', {'username': request.user.username})
+
+@login_required
+def estadios(request):
+	return render(request, 'estadios.html', {'username': request.user.username})
 
 @login_required
 def home(request):
