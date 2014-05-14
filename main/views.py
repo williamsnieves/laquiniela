@@ -24,6 +24,10 @@ def estadios(request):
 	return render(request, 'estadios.html', {'username': request.user.username})
 
 @login_required
+def quinielas(request):
+	return render(request, 'quiniela.html', {'username': request.user.username})
+
+@login_required
 def home(request):
 	return render(request, 'index.html', {'username': request.user.username})
 

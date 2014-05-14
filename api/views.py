@@ -1,3 +1,6 @@
+from footballpools.models import FootballPool
+from footballpoolsusers.models import FootballPoolUser
+from calendars.models import Calendar
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -62,6 +65,24 @@ def group_position_qnl(request, group=""):
 		#jsonResponse = serializers.serialize("json", position)
 		return HttpResponse(json.dumps(position_qnl), content_type="application/json")
 		#return HttpResponse(position)
+
+
+@api_view(['GET'])
+def nueva_quiniela(request):
+    quiniela_user = FootballPoolUser(cod_qnl='test',username=request.user.username)
+    quiniela_user.save()
+    quiniela_last_id = FootballPoolUser.objects.latest('id')
+    quiniela_current = FootballPoolUser.objects.get(pk=quiniela_last_id.id)
+    correlativo_quiniela = str(quiniela_current.id)+quiniela_current.username
+    #print(correlativo_quiniela)
+    quiniela_current.cod_qnl = correlativo_quiniela
+    quiniela_current.save()
+
+    c1 = Calendar.objects.all()
+    for item in c1:
+        quiniela = FootballPool(cod_qnl=quiniela_current.cod_qnl,user_qnl=request.user,group_qnl=item.group_match,date_qnl=item.date_match,name_qnl=item.name_match,team_a_qnl=item.team_a_match,goals_a_qnl=0,team_b_qnl=item.team_b_match,goals_b_qnl=0,result_qnl='0-0')
+        quiniela.save()
+    return HttpResponse("creando quiniela")
 
 
 @require_http_methods(["GET", "POST"])

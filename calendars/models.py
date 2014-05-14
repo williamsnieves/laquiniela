@@ -18,6 +18,8 @@ class Calendar(models.Model):
 	goals_b_match = models.IntegerField()
 	result_match = models.CharField(max_length=200)
 	description = models.CharField(max_length=1000)
+	flag_a_match = models.CharField(max_length=200,default='/')
+	flag_b_match = models.CharField(max_length=200,default='/')
 
 	def __str__(self):
 		return self.group_match

@@ -18,8 +18,13 @@ class EquipoList(generics.ListAPIView):
 	serializer_class = TeamSerializer
 
 	def get_queryset(self):
+		queryset = Team.objects.all()
 		equipo = self.kwargs['equipo']
-		return Team.objects.filter(name_team=equipo)
+
+		if equipo is not None:
+			queryset = queryset.filter(name_team=equipo)
+
+		return queryset
 
 	
 

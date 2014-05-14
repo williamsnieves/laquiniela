@@ -15,9 +15,8 @@ router.register(r'footballpools', FootballPoolViewSet)"""
 )"""
 
 urlpatterns = patterns('',
-	url(r'^quiniela/new/$', views.nueva_quiniela),
-    url(r'^quiniela/$', views.FootballPoolList.as_view()),
-    url(r'^quiniela/(?P<pk>[0-9]+)$', views.FootballPoolDetail.as_view()),
+    url(r'^testy/list$', views.FootballPoolList.as_view()),
+    url(r'^testy/(?P<pk>[0-9]+)$', views.FootballPoolDetail.as_view()),
     url(r'^users/$', views.UserList.as_view()),
 	url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
 )
