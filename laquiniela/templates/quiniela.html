@@ -5,15 +5,156 @@
 {% endblock content %}
 
 {% block templates %}
-	<script id="quiniela-template" type="text/template">
-		<a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
 
-		<div id="myModal" class="reveal-modal">
-		  <h2>Awesome. I have it.</h2>
-		  <p class="lead">Your couch.  It is mine.</p>
-		  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
-		  <a class="close-reveal-modal">&#215;</a>
-		</div>
+	<script id="quiniela-template" type="text/template">
+
+			<section class="large-12 columns new-quiniela">
+				<h2>La Quiniela</h2>
+				<P>
+					Bienvenido, esta es la primera vez que vas a jugar, debes pulsar el boton generar quiniela y luego podras rellenar los datos de cada jornada, es importante ir salvando tu progreso en cada grupo luego se procesara tu seleccion y llegaras a la fase de eliminatorias eso es todo disfruta y comparte con tus amigos!!!
+				</P>
+
+				<a class="button btnquiniela" href="#">Generar Quiniela</a>
+				<img class="loader" src="{% static  'img/ajax-loader.gif'%}" />
+
+			</section>
+			
+			<section class="large-12 columns" id="team-container" style="display:none;">
+				<div class="large-3 columns">
+					<h3 class="titulo-team">
+						Fase de Grupos
+					</h3>
+					<h4 class="subtitulo-team">
+						Grupo
+					</h4>
+				</div>
+				<div class="large-9 columns" id="container-group">
+					 <div id="content-group">
+					 	<ul id="group-list">
+							<li>A</li>
+							<li>B</li>
+							<li>C</li>
+							<li>D</li>
+							<li>E</li>
+							<li>F</li>
+							<li>G</li>
+							<li>H</li>	
+					 </ul>
+					 </div>
+					<div class="large-12 columns" id="team-list-container">
+						 <div id="content-team">
+						 	<ul id="team-list">
+
+						 	</ul>
+						 </div>				 
+					</div>
+				</div>
+				
+			</section>
+
+			<section class="large-12 columns" id="quiniela-body">
+				<h2>PARTIDOS</h2>
+				<section class="large-7 columns partidos-quiniela">
+					<ul class="list-matches">
+						<li>
+							<div class="qnl_stadium">
+								<span class='title-estadio'>Estadio</span>
+								<span class='name-estadio'>Rio de Janeiro</span>
+							</div>
+							<div class="qnl_date">
+								<span class='title-fecha'>Fecha</span>
+								<span class='fecha'>05/14</span>
+							</div>
+								<img src="{% static  'img/flags/brasil/brasil.png'%}" alt=''>
+								<span class='team-a'>BRA</span>
+								<input type="text" name="team" class="team_input" value="0"/>
+								<img src="{% static  'img/flags/croacia/croacia.png' %}" alt=''>
+								<span class='team-b'>CRO</span>
+								<input type="text" name="team" class="team_input"  value="0"/>							
+						</li>						
+						
+					</ul>
+				</section>
+				<section class="large-5 columns posiciones-quiniela">
+					<div id="trapezoide2-posicionesbg"></div>
+					<div id="trapezoide1-posiciones"></div>
+					<div id="trapezoide2-posiciones"></div>
+					<div id="lineqn1"></div>
+				 	<div id="lineqn2"></div>
+				 	<div id="lineqn3"></div>
+				 	<div id="lineqn4"></div>
+				 	<div id="lineqn5"></div>
+				 	<div id="lineqn6"></div>
+				 	<div class="content-posiciones">
+				 		<div class="header-posiciones">
+				 			<h3>GRUPO A</h3>
+				 			<h5>Estadisticas</h5>
+				 		</div>
+				 		<div class="body-posiciones">
+				 			<table>
+				 				<thead>
+				 					<tr>
+				 						<th></th>
+				 						<th>PJ</th>
+				 						<th>G</th>
+				 						<th>E</th>
+				 						<th>P</th>
+				 						<th>GF</th>
+				 						<th>GC</th>
+				 						<th>PTS</th>
+				 					</tr>
+				 				</thead>
+				 				<tbody>
+				 					<tr>
+				 						<td>BRA</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 					</tr>
+				 					<tr>
+				 						<td>CRO</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 					</tr>
+				 					<tr>
+				 						<td>MEX</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 					</tr>
+				 					<tr>
+				 						<td>CMR</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 						<td>0</td>
+				 					</tr>
+
+				 				</tbody>
+				 			</table>
+				 		</div>			 		
+						 		
+					</div>
+
+				</section>
+			</section>
+			
 	
 	</script>
 {% endblock templates %}

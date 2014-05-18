@@ -80,9 +80,10 @@ def nueva_quiniela(request):
 
     c1 = Calendar.objects.all()
     for item in c1:
-        quiniela = FootballPool(cod_qnl=quiniela_current.cod_qnl,user_qnl=request.user,group_qnl=item.group_match,date_qnl=item.date_match,name_qnl=item.name_match,team_a_qnl=item.team_a_match,goals_a_qnl=0,team_b_qnl=item.team_b_match,goals_b_qnl=0,result_qnl='0-0')
+        quiniela = FootballPool(cod_qnl=quiniela_current.cod_qnl,user_qnl=request.user,group_qnl=item.group_match,date_qnl=item.date_match,city_match=item.city_match,flag_a_qnl=item.flag_a_match,flag_b_qnl=item.flag_b_match,name_qnl=item.name_match,team_a_qnl=item.team_a_match,goals_a_qnl=0,team_b_qnl=item.team_b_match,goals_b_qnl=0,result_qnl='0-0')
         quiniela.save()
-    return HttpResponse("creando quiniela")
+    #return HttpResponse("creando quiniela")
+    return HttpResponse(json.dumps({"success" : "true","codqnl" : quiniela_current.cod_qnl}), content_type="application/json",status=200)
 
 
 @require_http_methods(["GET", "POST"])

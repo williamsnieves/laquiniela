@@ -11,12 +11,15 @@ class FootballPool(models.Model):
 	user_qnl = models.CharField(max_length=50)
 	group_qnl = models.CharField(max_length=1)
 	date_qnl = models.DateField()
+	city_match = models.CharField(max_length=200,default='')
 	name_qnl = models.CharField(max_length=200)
 	team_a_qnl = models.CharField(max_length=3)
 	goals_a_qnl = models.IntegerField()
 	team_b_qnl = models.CharField(max_length=3)
 	goals_b_qnl = models.IntegerField()
 	result_qnl = models.CharField(max_length=5)
+	flag_a_qnl = models.CharField(max_length=200,default='')
+	flag_b_qnl = models.CharField(max_length=200,default='')
 
 	def __str__(self):
 		return self.name_qnl

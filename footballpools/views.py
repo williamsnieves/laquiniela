@@ -38,13 +38,18 @@ class FootballPoolList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = FootballPool.objects.all()
-        userqnl = self.request.QUERY_PARAMS.get('username', None)
+        codigoqnl = self.request.QUERY_PARAMS.get('codqnl', None)
         groupqnl = self.request.QUERY_PARAMS.get('group', None)
 
-        if userqnl is not None:
-            queryset = queryset.filter(user_qnl=userqnl)
+        
+        queryset = queryset.filter(group_qnl=groupqnl).filter(cod_qnl=codigoqnl).filter(user_qnl=self.request.user)
+
+        """if codigoqnl is not None:
+            queryset = queryset.filter(cod_qnl=codigoqnl)
         elif groupqnl is not None:
             queryset = queryset.filter(group_qnl=groupqnl)
+        else:
+            queryset = queryset.filter(group_qnl=groupqnl).filter(cod_qnl=codigoqnl).filter(user_qnl=self.request.user)"""
 
         return queryset
 

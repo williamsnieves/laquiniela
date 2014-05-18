@@ -21,7 +21,7 @@ Quiniela.Router = Backbone.Router.extend({
 
 	quinielaHandler : function(){
 		$(".full-section").css("background","url(../static/img/bghand.png) 100% 100%")
-		var quiniela = new Quiniela.Views.Quinielas()
+		var quiniela = new Quiniela.Views.Quinielas();
 	}
 
 })
