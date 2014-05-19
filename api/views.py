@@ -58,9 +58,11 @@ def positions_qnl(request):
 		#return HttpResponse(position)
 
 @api_view(['GET'])
-def group_position_qnl(request, group=""):
+def group_position_qnl(request):
 	if request.method == 'GET':
-		position_qnl = ViewPositionQnl().getPositionByGroup(group)
+		group = request.REQUEST['group']
+		codigo_qnl = request.REQUEST['codigoqnl']
+		position_qnl = ViewPositionQnl().getPositionByGroup(group,codigo_qnl)
 		#return Response(position)
 		#jsonResponse = serializers.serialize("json", position)
 		return HttpResponse(json.dumps(position_qnl), content_type="application/json")

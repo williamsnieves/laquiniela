@@ -22,6 +22,11 @@ Quiniela.Router = Backbone.Router.extend({
 	quinielaHandler : function(){
 		$(".full-section").css("background","url(../static/img/bghand.png) 100% 100%")
 		var quiniela = new Quiniela.Views.Quinielas();
+	},
+
+	posicionesHandler : function(){
+		$(".full-section").css("background","url(../static/img/bghand.png) 100% 100%")
+		var oficial = new Quiniela.Views.Oficiales();
 	}
 
 })
