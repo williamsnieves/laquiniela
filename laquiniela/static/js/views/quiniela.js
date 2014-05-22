@@ -4,7 +4,8 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 
 	events : {
 		"click .btnquiniela" : "quinielaHandler",
-		"click #group-list" : "groupHandler"
+		"click #group-list" : "groupHandler",
+		"click .btn-save" : "saveQnlHandler"
 	},
 
 	template: _.template($("#quiniela-template").html()),
@@ -12,7 +13,46 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 	initialize : function(){
 		this.render();
 		//console.log($('#myModal'))
-		$(".new-quiniela").fadeIn("slow");
+		//$(".new-quiniela").hide();
+		var codigoCreado = localStorage.getItem("codigoqnl");
+
+		var validQnl = new Quiniela.Models.ValidQnl();
+
+		validQnl.urlRoot = "/api/quiniela/valid?codigo="+codigoCreado;
+
+		validQnl.fetch({
+			success : function(codigo){
+				console.log(codigo)
+				if(codigo.attributes.success){
+					var codigoValido = codigo.attributes.codigo;	
+				}else{
+					$(".new-quiniela").fadeIn("slow");
+					return false;
+				}
+				
+				var existQnl = new Quiniela.Models.ExistQnl();
+
+				existQnl.urlRoot = "/api/quiniela/count?codigo="+codigoValido;
+
+				existQnl.fetch({
+					success : function(cant){
+						if(cant.attributes.cant == 1){
+							$(".edit-quiniela a").attr("href", codigoValido+"/edit")
+							$(".edit-quiniela").fadeIn("slow");
+						}	
+					},
+					error : function(err){
+						console.log(err)
+					}
+				})
+
+			},
+			error: function(err){
+
+			}
+		})
+
+		
 	},
 
 	render : function(){
@@ -21,6 +61,7 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 	},
 
 	quinielaHandler : function(e){
+		localStorage["codigoqnl"] = "";
 		$(".loader").show();
 
 		var quiniela =  new Quiniela.Models.QuinielaNueva()
@@ -30,7 +71,8 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 				$(".list-matches").html("");
 				var currentCodqnl = response.attributes.codqnl;
 				localStorage["codigoqnl"] = currentCodqnl;
-				var defaultQnl = new Quiniela.Models.QuinielaUpdate()
+				$(".btn-save").attr("data-type","A");
+				var defaultQnl = new Quiniela.Models.QuinielaList()
 				defaultQnl.urlRoot = "/api/quinielas/?group=A&codqnl="+currentCodqnl;
 
 
@@ -44,7 +86,7 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 							console.log(v);
 							var fecha = new Date(v.date_qnl);
 						    var formato =  ((fecha.getDate() + 1) + '/' +(fecha.getMonth() + 1))
-							var strqnl = "<li><div class='qnl_stadium'>"+
+							var strqnl = "<li id='"+v.order_qnl+"'><div class='qnl_stadium'>"+
 											"<span class='title-estadio'>Sede</span>"+
 											"<span class='name-estadio'>"+v.city_match+"</span>"+
 										"</div>"+
@@ -54,10 +96,10 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 										"</div>"+
 										"<img src='"+v.flag_a_qnl+"' alt=''>"+
 										"<span class='team-a'>"+v.team_a_qnl+"</span>"+
-										"<input type='text' name='team' class='team_input' value='0'/>"+
+										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' placeholder='0'/>"+
 										"<img src='"+v.flag_b_qnl+"' alt=''>"+
 										"<span class='team-b'>"+v.team_b_qnl+"</span>"+
-										"<input type='text' name='team' class='team_input'  value='0'/>"+
+										"<input type='number' name='team-b' class='team_input team_input_b' max='9' min='0' placeholder='0'/>"+
 										"</li>";
 							$(".list-matches").append(strqnl);
 						})
@@ -127,13 +169,13 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 
 	groupHandler : function(e){
 		var choosedGroup = e.target.innerText;
-		alert(choosedGroup)
-
 		var currentCodqnl = localStorage.getItem("codigoqnl");
+
+		$(".btn-save").attr("data-type",choosedGroup);
 
 		$(".list-matches").html("");
 
-		var defaultQnl = new Quiniela.Models.QuinielaUpdate()
+		var defaultQnl = new Quiniela.Models.QuinielaList()
 		defaultQnl.urlRoot = "/api/quinielas/?group="+choosedGroup+"&codqnl="+currentCodqnl;
 
 		defaultQnl.fetch({
@@ -144,7 +186,7 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 					console.log(v);
 					var fecha = new Date(v.date_qnl);
 				    var formato =  ((fecha.getDate() + 1) + '/' +(fecha.getMonth() + 1))
-					var strqnl = "<li><div class='qnl_stadium'>"+
+					var strqnl = "<li id='"+v.order_qnl+"'><div class='qnl_stadium'>"+
 									"<span class='title-estadio'>Sede</span>"+
 									"<span class='name-estadio'>"+v.city_match+"</span>"+
 								"</div>"+
@@ -154,10 +196,10 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 								"</div>"+
 								"<img src='"+v.flag_a_qnl+"' alt=''>"+
 								"<span class='team-a'>"+v.team_a_qnl+"</span>"+
-								"<input type='text' name='team' class='team_input' value='0'/>"+
+								"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' placeholder='0'/>"+
 								"<img src='"+v.flag_b_qnl+"' alt=''>"+
 								"<span class='team-b'>"+v.team_b_qnl+"</span>"+
-								"<input type='text' name='team' class='team_input'  value='0'/>"+
+								"<input type='number' name='team-b' class='team_input team_input_b' max='9' min='0' placeholder='0'/>"+
 								"</li>";
 					$(".list-matches").append(strqnl);
 				})
@@ -205,6 +247,87 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 			}
 		})
 
+
+
+	},
+
+	saveQnlHandler : function(e){
+
+		$(".loader-quiniela").show();
+		var currentGroup = $(e.target).attr("data-type");
+		var currentCodqnl = localStorage.getItem("codigoqnl");
+
+		var listMatch = [];
+		var objMatch = {};
+		var mainMatch = {};
+
+		$.each($(".list-matches li"), function(c,v){
+			objMatch = {
+				goles_a : $(v).children("input.team_input_a").val(),
+				goles_b : $(v).children("input.team_input_b").val(),
+				partido : $(v).attr("id"),
+				progress : true
+			}
+
+			listMatch.push(objMatch);
+		})
+
+		mainMatch.data = listMatch
+
+		console.log(mainMatch);
+
+		var updateQnl = new Quiniela.Models.QuinielaUpdate();
+
+		updateQnl.urlRoot = "/api/quiniela/?grupo="+currentGroup+"&codigo="+currentCodqnl;
+
+		updateQnl.save(mainMatch,{
+			success :function(response){
+				$(".loader-quiniela").hide();
+				$(".success-middle").text("Su Progreso en el grupo "+currentGroup+" se ha almacenado");
+				$(".success-middle").fadeIn("slow").delay(1000).fadeOut("fast");
+
+				var positionTable = new Quiniela.Models.PositionQnl()
+
+				positionTable.urlRoot = "/api/positions/qnlgroup/?group="+currentGroup+"&codigoqnl="+currentCodqnl;
+
+				positionTable.fetch({
+					success:function(table){
+						console.log(table)
+						$(".body-posiciones table tbody").html("");
+
+						var headerGroup = table.attributes[0].group;
+						$(".header-posiciones h3").text("GRUPO "+headerGroup);
+
+						$.each(table.attributes,function(k,val){
+							console.log(val);
+
+							var strTable = "<tr>"+
+						 						"<td>"+val.team+"</td>"+
+						 						"<td>"+val.jj+"</td>"+
+						 						"<td>"+val.jg+"</td>"+
+						 						"<td>"+val.je+"</td>"+
+						 						"<td>"+val.jp+"</td>"+
+						 						"<td>"+val.gf+"</td>"+
+						 						"<td>"+val.gc+"</td>"+
+						 						"<td>"+val.dif+"</td>"+
+						 						"<td>"+val.pts+"</td>"+
+		 									"</tr>";
+
+		 					$(".body-posiciones table tbody").append(strTable);
+						})
+
+					},
+					error : function(err){
+						console.log(err)
+					}
+				})
+				console.log(response);
+			},
+			error: function(err){
+				console.log("error en el servidor")
+				console.log(err);
+			}
+		})
 
 
 	}

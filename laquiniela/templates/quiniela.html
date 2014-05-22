@@ -18,6 +18,17 @@
 				<img class="loader" src="{% static  'img/ajax-loader.gif'%}" />
 
 			</section>
+
+			<section class="large-12 columns edit-quiniela">
+				<h2>La Quiniela</h2>
+				<P>
+					Ya has creado una quiniela, si quieres crear otra mas debes realizar invitaciones para activarla, si quieres editar la que ya has creado pulsa en el boton. 
+				</P>
+
+				<a class="button btneditquiniela" href="#">Editar Quiniela</a>
+				<img class="loader" src="{% static  'img/ajax-loader.gif'%}" />
+
+			</section>
 			
 			<section class="large-12 columns" id="team-container" style="display:none;">
 				<div class="large-3 columns">
@@ -54,6 +65,9 @@
 
 			<section class="large-12 columns" id="quiniela-body">
 				<h2>PARTIDOS</h2>
+				<div class="alert alert-success success-middle">
+			      
+			    </div>
 				<section class="large-7 columns partidos-quiniela">
 					<ul class="list-matches">
 						<li>
@@ -74,6 +88,8 @@
 						</li>						
 						
 					</ul>
+					<button class="button btn-save">Guardar Progreso</button>
+					<img class="loader-quiniela" src="{% static  'img/ajax-loader.gif'%}" />
 				</section>
 				<section class="large-5 columns posiciones-quiniela">
 					<div id="trapezoide2-posicionesbg"></div>

@@ -20,6 +20,8 @@ class FootballPool(models.Model):
 	result_qnl = models.CharField(max_length=5)
 	flag_a_qnl = models.CharField(max_length=200,default='')
 	flag_b_qnl = models.CharField(max_length=200,default='')
+	order_qnl = models.CharField(max_length=200,default='')
+	progress_qnl = models.CharField(max_length=6,default='')
 
 	def __str__(self):
 		return self.name_qnl

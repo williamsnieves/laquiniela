@@ -20,6 +20,7 @@ class Calendar(models.Model):
 	description = models.CharField(max_length=1000)
 	flag_a_match = models.CharField(max_length=200,default='/')
 	flag_b_match = models.CharField(max_length=200,default='/')
+	order_match = models.CharField(max_length=200,default='')
 
 	def __str__(self):
 		return self.group_match

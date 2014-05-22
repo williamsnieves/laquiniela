@@ -19,7 +19,7 @@ class FootballPoolSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = FootballPool
-		fields = ('cod_qnl','user_qnl','group_qnl','date_qnl','city_match','flag_a_qnl','flag_b_qnl','name_qnl','team_a_qnl','goals_a_qnl','team_b_qnl','goals_b_qnl','result_qnl')
+		fields = ('cod_qnl','user_qnl','group_qnl','date_qnl','city_match','flag_a_qnl','flag_b_qnl','order_qnl','name_qnl','team_a_qnl','goals_a_qnl','team_b_qnl','goals_b_qnl','result_qnl')
 
 #class ViewPositionSerializer(serializers.Serializer):
 

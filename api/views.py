@@ -82,7 +82,7 @@ def nueva_quiniela(request):
 
     c1 = Calendar.objects.all()
     for item in c1:
-        quiniela = FootballPool(cod_qnl=quiniela_current.cod_qnl,user_qnl=request.user,group_qnl=item.group_match,date_qnl=item.date_match,city_match=item.city_match,flag_a_qnl=item.flag_a_match,flag_b_qnl=item.flag_b_match,name_qnl=item.name_match,team_a_qnl=item.team_a_match,goals_a_qnl=0,team_b_qnl=item.team_b_match,goals_b_qnl=0,result_qnl='0-0')
+        quiniela = FootballPool(cod_qnl=quiniela_current.cod_qnl,user_qnl=request.user,group_qnl=item.group_match,date_qnl=item.date_match,city_match=item.city_match,flag_a_qnl=item.flag_a_match,flag_b_qnl=item.flag_b_match,name_qnl=item.name_match,team_a_qnl=item.team_a_match,goals_a_qnl=0,team_b_qnl=item.team_b_match,goals_b_qnl=0,result_qnl='0-0',order_qnl=item.order_match)
         quiniela.save()
     #return HttpResponse("creando quiniela")
     return HttpResponse(json.dumps({"success" : "true","codqnl" : quiniela_current.cod_qnl}), content_type="application/json",status=200)
@@ -98,33 +98,71 @@ def quiniela(request):
 		user = request.user
 
 		datos = json.loads(request.body.decode())
+
 		if not datos:
 			return HttpResponse(json.dumps({"error" : "no existen datos"}), content_type="application/json",status=400)
 
 		#quiniela = serializers.deserialize('json',FootballPool.objects.filter(group_qnl=grupo).filter(cod_qnl=codigo_qnl).filter(user_qnl=user).update(goals_a_qnl=3,goals_b_qnl=2))
-		result = datos['goles_a'] + "-" + datos['goles_b']
-		try:
-			FootballPool.objects.filter(group_qnl=grupo).filter(cod_qnl=codigo_qnl).filter(user_qnl=user).update(goals_a_qnl=datos['goles_a'],goals_b_qnl=datos['goles_b'],result_qnl=result)
-			return HttpResponse(json.dumps({"success" : "true"}), content_type="application/json",status=200)
-		except FootballPool.DoesNotExist:
-			raise Http404
-			return HttpResponse(json.dumps({"error" : "error"}), content_type="application/json",status=404)
-		except DatabaseError as e:
-			return HttpResponse(json.dumps({"error" : "database-error"}), content_type="application/json")
-			#return HttpResponse(json.dumps({"error" : "error"}), content_type="application/json",status=404)
+		#result = datos['data']['goles_a'] + "-" + datos['goles_b']
 
-
-	if request.method == 'GET':
-		grupo = request.GET.get('grupo')
-		codigo_qnl = request.GET.get('codigo')
-		user = request.user
-		if not grupo:
-			quiniela  = serializers.serialize('json',FootballPool.objects.all())
-		else:
-			quiniela = serializers.serialize('json',FootballPool.objects.filter(group_qnl=grupo).filter(cod_qnl=codigo_qnl).filter(user_qnl=user))		
+		for data in datos['data']:
+			result = data['goles_a'] + "-" + data['goles_b']			
+			responseqnl = FootballPool.objects.filter(group_qnl=grupo).filter(cod_qnl=codigo_qnl).filter(user_qnl=user).filter(order_qnl=data['partido']).update(goals_a_qnl=data['goles_a'],goals_b_qnl=data['goles_b'],progress_qnl=data['progress'],result_qnl=result)
 		
-		return HttpResponse(quiniela)
-		#return HttpResponse(request.GET.get('prueba'))
+		return HttpResponse(json.dumps({"success" : "true"}), content_type="application/json",status=200)
+
+@api_view(['GET'])
+def get_totalqnl(request):
+	if request.method == "GET":
+		codigoqnl = request.REQUEST['codigo']
+		#codigoqnl = "1williams.nieves.71"
+		cant = FootballPoolUser.objects.filter(cod_qnl=codigoqnl).count()
+
+		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)
+
+@api_view(['GET'])
+def get_progressqnl(request):
+	if request.method == "GET":
+		#codigoqnl = request.REQUEST['codigo']
+		codigoqnl = "1williams.nieves.71"
+		cant = FootballPool.objects.filter(cod_qnl=codigoqnl).filter(progress_qnl=True).count()
+
+		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)
+
+@api_view(['GET'])
+def get_completefaseqnl(request):
+	if request.method == "GET":
+		#codigoqnl = request.REQUEST['codigo']
+		codigoqnl = "1williams.nieves.71"
+		cant = FootballPoolUser.objects.filter(cod_qnl=codigoqnl).filter(qnl_fase=1).count()
+		
+		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)
+
+@api_view(['GET'])
+def get_eliminatoria(request):
+	if request.method == "GET":
+		#codigoqnl = request.REQUEST['codigo']
+		codigoqnl = "1williams.nieves.71"
+		cant = FootballPoolUser.objects.filter(cod_qnl=codigoqnl).filter(qnl_eliminatoria=1).count()
+		
+		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)
+
+
+@api_view(['GET'])
+def get_validqnl(request):
+	if request.method == "GET":
+		codigoqnl = request.REQUEST['codigo']
+		#codigoqnl = "1williams.nieves.71"
+		codigo = FootballPoolUser.objects.filter(cod_qnl=codigoqnl)
+
+		if not codigo:
+			return HttpResponse(json.dumps({"success" : False}), content_type="application/json",status=200)
+		else:				
+			return HttpResponse(json.dumps({"codigo" : codigo[0].cod_qnl, "success" : True}), content_type="application/json",status=200)
+
+
+
+			
 	
 
 
