@@ -123,8 +123,8 @@ def get_totalqnl(request):
 @api_view(['GET'])
 def get_progressqnl(request):
 	if request.method == "GET":
-		#codigoqnl = request.REQUEST['codigo']
-		codigoqnl = "1williams.nieves.71"
+		codigoqnl = request.REQUEST['codigo']
+		#codigoqnl = "1williams.nieves.71"
 		cant = FootballPool.objects.filter(cod_qnl=codigoqnl).filter(progress_qnl=True).count()
 
 		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)
@@ -132,8 +132,8 @@ def get_progressqnl(request):
 @api_view(['GET'])
 def get_completefaseqnl(request):
 	if request.method == "GET":
-		#codigoqnl = request.REQUEST['codigo']
-		codigoqnl = "1williams.nieves.71"
+		codigoqnl = request.REQUEST['codigo']
+		#codigoqnl = "1williams.nieves.71"
 		cant = FootballPoolUser.objects.filter(cod_qnl=codigoqnl).filter(qnl_fase=1).count()
 		
 		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)
@@ -141,8 +141,8 @@ def get_completefaseqnl(request):
 @api_view(['GET'])
 def get_eliminatoria(request):
 	if request.method == "GET":
-		#codigoqnl = request.REQUEST['codigo']
-		codigoqnl = "1williams.nieves.71"
+		codigoqnl = request.REQUEST['codigo']
+		#codigoqnl = "1williams.nieves.71"
 		cant = FootballPoolUser.objects.filter(cod_qnl=codigoqnl).filter(qnl_eliminatoria=1).count()
 		
 		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)

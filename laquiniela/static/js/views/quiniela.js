@@ -5,7 +5,8 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 	events : {
 		"click .btnquiniela" : "quinielaHandler",
 		"click #group-list" : "groupHandler",
-		"click .btn-save" : "saveQnlHandler"
+		"click .btn-save" : "saveQnlHandler",
+		"click .btn-eliminatoria" : "showEliminatoriaHandler"
 	},
 
 	template: _.template($("#quiniela-template").html()),
@@ -326,6 +327,34 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 			error: function(err){
 				console.log("error en el servidor")
 				console.log(err);
+			}
+		})
+
+
+	},
+
+	showEliminatoriaHandler :function(e){
+		var currentCodqnl = localStorage.getItem("codigoqnl");
+		var progressQnl = new Quiniela.Models.ProgressQnl();
+
+		progressQnl.urlRoot = "/api/quiniela/progress?codigo="+currentCodqnl;
+
+
+		progressQnl.fetch({
+			success : function(progress){
+				if(progress.attributes.cant < 48){
+					$(".warning-middle").text("Para ir a la siguiente ronda debes completar la fase de grupos");
+					$(".warning-middle").fadeIn("slow").delay(5000).fadeOut("fast");
+				}
+
+				if(progress.attributes.cant === 48){
+					$(".success-middle").text("Fase de eliminatoria activa");
+					$(".success-middle").fadeIn("slow").delay(5000).fadeOut("fast");
+				}
+			},
+			error : function(err){
+				$(".error-middle").text("Se ha producido un error intenta iniciar nuevamente");
+				$(".success-middle").fadeIn("slow").delay(5000).fadeOut("fast");
 			}
 		})
 

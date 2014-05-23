@@ -934,7 +934,7 @@ figure
 .quiniela-header section figure
 	margin: 1em
 
-.quiniela-header section .menu-quiniela
+/*.quiniela-header section .menu-quiniela
 	position relative	
 
 .quiniela-header section .menu-quiniela ul
@@ -949,10 +949,6 @@ figure
 .quiniela-header section .menu-quiniela ul li:hover > ul.submenu
 	opacity 1
 
-
-#mundial
-	left 10em
-	
 
 .quiniela-header section .menu-quiniela ul li ul.submenu
 	background verde_claro
@@ -976,29 +972,69 @@ figure
 	-webkit-transform skewX(30deg)
 
 
-/*.quiniela-header section .menu-quiniela ul li a:hover
-	color gris_claro
-	background verde_claro
-	-webkit-transform skewX(-30deg)
-	width 100%
-	height 100%*/
-
-/*style="background : yellow; position: absolute;  top: 30px; left: 0; width: 100px; "*/
-
-/*.quiniela-header section .menu-quiniela ul li a
-	color white
-	padding 0.5em	
-	display block
-	margin-top 0
-	padding 0 0 0 1em*/
-
 .quiniela-header section .menu-quiniela ul li a
 	color gris_claro
 	background verde_claro
 	-webkit-transform skewX(-30deg)
 	padding 1em	
 	display block
-	margin-top 0
+	margin-top 0*/
+
+.quiniela-header section .menu-quiniela
+	position relative
+
+.quiniela-header section .menu-quiniela ul
+	list-style none
+	margin 0
+
+.quiniela-header section .menu-quiniela li
+	position relative
+	float left
+	background azul_claro
+	border-right 1px solid white
+	-webkit-transform skewx(-20deg)
+	transform skewx(-20deg)
+	-webkit-transition background .2s ease, color .2s ease
+	transition background .2s ease, color .2s ease
+	&:hover
+		background verde_claro
+
+.quiniela-header section .menu-quiniela ul li a
+	display block
+	padding 1em
+	color white
+	&:hover
+		color azul_claro
+
+.quiniela-header section .menu-quiniela ul li
+	&:first-child
+		border-left 1px solid white
+
+
+.quiniela-header section .menu-quiniela ul li ul
+	display none
+
+.quiniela-header section .menu-quiniela span
+	display block
+	-webkit-transform skewx(20deg)
+	transform skewx(20deg)
+
+.quiniela-header section .menu-quiniela ul li.selected
+	background verde_claro
+
+.quiniela-header section .menu-quiniela ul li.selected a
+	color azul_claro
+
+.quiniela-header section .menu-quiniela li
+	&:hover ul
+		display block
+		position absolute
+			
+
+
+
+#mundial
+	left 10em
 
 .social-list
 	list-style none
@@ -1120,6 +1156,14 @@ figure
 	color #843534
 
 .success-middle
+	display none
+	width 58%
+
+.warning-middle
+	display none
+	width 58%
+
+.error-middle
 	display none
 	width 58%
 
