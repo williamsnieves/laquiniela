@@ -7,7 +7,7 @@ class CalendarSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = Calendar
-        fields = ('id', 'group_match', 'cod_match','date_match','city_match','name_match','team_a_match','goals_a_match','team_b_match','goals_b_match','result_match','description')
+        fields = ('id', 'group_match', 'cod_match','date_match','city_match','name_match','team_a_match','goals_a_match','team_b_match','flag_a_match','flag_b_match','goals_b_match','result_match','description')
 
 
 

@@ -60,6 +60,7 @@ Quiniela.Views.Teams = Backbone.View.extend({
 
 	teamClickHandler : function(e){
 		var teamSelected = $(e.target).attr("data-prefijo");
+		$(".copas-activas").html("");
 
 		var equipo = new Quiniela.Models.Team()
 
@@ -76,7 +77,7 @@ Quiniela.Views.Teams = Backbone.View.extend({
 					
 					for(var i = 0; i < val.cant_titles ; i++){
 						var countcopa = i+1
-						$(".copas_ganadas").append("<li id='copa"+countcopa+"'><img src='../static/img/copa_activa.png' alt='' width='23' height='56'></li>")
+						$(".copas_ganadas").append("<li class='copas-activas' id='copa"+countcopa+"'><img src='../static/img/copa_activa.png' alt='' width='23' height='56'></li>")
 						//$(".copas_ganadas").append("<li><img src='../static/img/copa_inactiva.png' alt='' width='23' height='56'></li>")
 					}
 					
@@ -85,37 +86,37 @@ Quiniela.Views.Teams = Backbone.View.extend({
 							$(".full-section").css("background","url(../static/img/teams/brasil/brasil.png) 100% 100%")
 							break;
 						case "CMR":
-							$(".full-section").css("background","url(../static/img/teams/camerun/camerun.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/camerun/camerun.jpg) 100% 100%")
 							break;
 						case "CRO":
-							$(".full-section").css("background","url(../static/img/teams/croacia/croacia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/croacia/croacia.jpg) 100% 100%")
 							break;
 						case "MEX":
-							$(".full-section").css("background","url(../static/img/teams/mexico/mexico.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/mexico/mexico.jpg) 100% 100%")
 							break;
 						case "AUS":
-							$(".full-section").css("background","url(../static/img/teams/australia/australia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/australia/australia.jpg) 100% 100%")
 							break;
 						case "HOL":
-							$(".full-section").css("background","url(../static/img/teams/holanda/holanda.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/holanda/holanda.jpg) 100% 100%")
 							break;
 						case "ESP":
-							$(".full-section").css("background","url(../static/img/teams/espana/espana.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/espana/espana.jpg) 100% 100%")
 							break;
 						case "CHI":
-							$(".full-section").css("background","url(../static/img/teams/chile/chile.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/chile/chile.jpg) 100% 100%")
 							break;
 						case "JAP":
-							$(".full-section").css("background","url(../static/img/teams/japon/japon.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/japon/japon.jpg) 100% 100%")
 							break;
 						case "COL":
-							$(".full-section").css("background","url(../static/img/teams/colombia/colombia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/colombia/colombia.jpg) 100% 100%")
 							break;
 						case "CVA":
-							$(".full-section").css("background","url(../static/img/teams/marfil/marfil.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/costamarfil/costamarfil.jpg) 100% 100%")
 							break;
 						case "GRE":
-							$(".full-section").css("background","url(../static/img/teams/grecia/grecia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/grecia/grecia.jpg) 100% 100%")
 							break;
 						case "CRC":
 							$(".full-section").css("background","url(../static/img/teams/costarica/costarica.png) 100% 100%")

@@ -16,5 +16,7 @@ urlpatterns = patterns(
 	#url(r'^position/(?P<pk>[A-Z]+)$', 'group_position'),
 	url(r'^position/(?P<group>[-A-Za-z0-9_]+)/$', 'group_position'),
 	url(r'^positions/qnlgroup/$', 'group_position_qnl'),
+	url(r'^quiniela/octavos/$', 'octavos_qnl'),
+	url(r'^quiniela/cuartos/$', 'cuartos_qnl'),
 
 )

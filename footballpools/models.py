@@ -68,8 +68,8 @@ class ViewPositionQnl:
 		return final_list
 		
 	def getPositionByGroup(self, group="", cod_qnl=None):
-		cursor = connection.cursor()
-		cursor.execute("SELECT * FROM vw_position_qnl grupo WHERE grupo.group='"+group+"' AND grupo.cod_qnl='"+cod_qnl+"'")
+		cursor = connection.cursor() 
+		cursor.execute("SELECT * FROM vw_position_qnl grupo WHERE grupo.group='"+group+"' AND grupo.cod_qnl='"+cod_qnl+"' ORDER BY grupo.pts DESC")
 		position_list = []
 		final_list = []
 		position_dict = {}

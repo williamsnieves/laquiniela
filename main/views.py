@@ -28,8 +28,28 @@ def quinielas(request):
 	return render(request, 'quiniela.html', {'username': request.user.username})
 
 @login_required
-def oficiales(request):
+def quinielas_octavos(request):
+	return render(request, 'octavos.html', {'username': request.user.username})
+
+@login_required
+def quinielas_cuartos(request):
+	return render(request, 'cuartos.html', {'username': request.user.username})
+
+@login_required
+def quinielas_semis(request):
+	return render(request, 'semis.html', {'username': request.user.username})
+
+@login_required
+def quinielas_final(request):
+	return render(request, 'final.html', {'username': request.user.username})
+
+@login_required
+def fase(request):
 	return render(request, 'posiciones.html', {'username': request.user.username})
+
+@login_required
+def eliminatorias(request):
+	return render(request, 'eliminatorias.html', {'username': request.user.username})
 
 @login_required
 def home(request):

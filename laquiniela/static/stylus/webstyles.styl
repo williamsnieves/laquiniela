@@ -3,6 +3,7 @@
 
 azul_claro = #00a7ff
 gris_claro = #878787
+amarillo_claro = #ffff45
 verde_claro = #cfff09
 verde_medio = #89f545
 
@@ -30,6 +31,9 @@ figure
 
 
 #team-container
+	margin-top 2em
+
+#stadium-container
 	margin-top 2em
 
 #team-container h3.titulo-team
@@ -227,6 +231,9 @@ figure
 #posiciones-wrapp
 	margin-top 2em
 
+#eliminatorias-wrapp
+	margin-top 2em
+
 .header-oficial
 	margin 1em
 
@@ -244,14 +251,18 @@ figure
 	background verde_claro
 	height 400px
 
+.eliminatorias-wrapp-content
+	border 1px solid verde_claro
+	height 700px
+	position relative
+
 .content-description
 	position absolute
 	z-index 9999
 	width 90%
 	height 325px
 	margin-top -3.5em
-	overflow-y scroll
-    overflow-x hidden
+	color gris_claro
 
 .content-posiciones .header-posiciones
 	position absolute
@@ -714,12 +725,11 @@ figure
 	list-style none
 	margin-left 0.1em
 
-.list-partidos li
-	padding-top 1em
 
 .list-partidos .title-fecha
 	font-weight bold
 	color azul_claro
+	font-size 0.8em
 	text-transform uppercase
 
 .list-partidos .fecha
@@ -741,6 +751,9 @@ figure
 	margin-left 0.5em
 	color azul_claro
 	font-size 0.8em
+
+.list-partidos li img
+	width 15%
 
 .content-img
 	position absolute
@@ -1006,13 +1019,43 @@ figure
 	&:hover
 		color azul_claro
 
+.quiniela-header section .menu-quiniela ul li ul
+	display none
+	width 800px
+	z-index 999999
+	margin-left -0.5em
+
+.quiniela-header section .menu-quiniela ul li ul li
+	background verde_claro
+
+.quiniela-header section .menu-quiniela ul li ul li a
+	color gris_claro
+	margin 0
+	padding 0.5em 0.5em
+
+.quiniela-header section .menu-quiniela ul li ul li a
+	&:first-child
+		padding-left 1em
+
+.quiniela-header section .menu-quiniela ul li ul li a
+	&:last-child
+		padding-right 1em
+
 .quiniela-header section .menu-quiniela ul li
 	&:first-child
 		border-left 1px solid white
 
 
-.quiniela-header section .menu-quiniela ul li ul
-	display none
+.quiniela-header section .menu-quiniela ul li ul.submenu1 span
+	display block
+	-webkit-transform skewx(34deg)
+	transform skewx(34deg)
+
+.quiniela-header section .menu-quiniela ul li ul.submenu2 span
+	display block
+	-webkit-transform skewx(34deg)
+	transform skewx(34deg)
+
 
 .quiniela-header section .menu-quiniela span
 	display block
@@ -1026,7 +1069,12 @@ figure
 	color azul_claro
 
 .quiniela-header section .menu-quiniela li
-	&:hover ul
+	&:hover ul.submenu1
+		display block
+		position absolute
+
+.quiniela-header section .menu-quiniela li
+	&:hover ul.submenu2
 		display block
 		position absolute
 			
@@ -1167,7 +1215,240 @@ figure
 	display none
 	width 58%
 
+.titulo-eliminatoria
+	color white
+	text-transform uppercase
 
+.team-octa-a
+	border-bottom 100px solid verde_medio
+	border-left 30px solid transparent
+	border-right 30px solid transparent
+	height 0
+	position absolute
+	top -1em
+	left 1em
+	z-index 999999
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+
+.team-octa-b
+	border-bottom 100px solid verde_claro
+	border-left 30px solid transparent
+	border-right 30px solid transparent
+	height 0
+	position absolute
+	top 0.8em
+	left 1em
+	z-index 999999
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+
+.block1c
+	top 5.8em
+
+.block2d
+	top 7.7em
+
+.block1b
+	top 12.8em
+
+.block2a
+	top 14.7em
+
+.block1d
+	top 19.8em
+
+.block2c
+	top 21.7em
+
+.team-cuarto
+	border-bottom 150px solid amarillo_claro
+	border-left 57px solid transparent
+	border-right 57px solid transparent
+	height 0
+	position absolute
+	top 4em
+	left 7.1em
+	z-index 999999
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+
+.blockw49
+	top 1em
+
+.blockw50
+	top 8em
+
+.blockw53
+	top 15em
+
+.blockw54
+	top 22em
+
+
+.team-semis
+	border-bottom 271px solid verde_medio
+	border-left 113px solid transparent
+	border-right 113px solid transparent
+	height 0
+	position absolute
+	top 4em
+	left 7.5em
+	z-index 9999999
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+
+.blockw57
+	top 0.7em
+
+.blockw58
+	top 14.7em
+
+.team-final
+	border-bottom 250px solid verde_claro
+	border-left 225px solid transparent
+	border-right 225px solid transparent
+	height 0
+	position absolute
+	top 8.4em
+	left 16.8em
+	z-index 9999999
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+
+.blockw62
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	border-bottom 250px solid amarillo_claro
+	border-left 225px solid transparent
+	border-right 225px solid transparent
+	top 22.4em
+
+.blockw59
+	top 14.7em
+	left 39.8em
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+
+.blockw60
+	top 28.7em
+	left 39.8em
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+
+
+.blockw51
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 14.9em
+	left 47em
+
+.blockw52
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 21.9em
+	left 47em
+
+.blockw55
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 28.9em
+	left 47em
+
+.blockw56
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 35.9em
+	left 47em
+
+.block1e
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 13em
+	left 56em
+
+.block2f
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+	top 14.8em
+	left 56em
+
+.block1g
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 20em
+	left 56em
+
+.block2h
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+	top 21.8em
+	left 56em
+
+.block1f
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 27em
+	left 56em
+
+.block2e
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+	top 28.8em
+	left 56em
+
+.block1h
+	-webkit-transform rotate(-90deg)
+	transform rotate(-90deg)
+	-moz-transform rotate(-90deg)
+	-o-transform rotate(-90deg)
+	top 34em
+	left 56em
+	
+.block2g
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+	-moz-transform rotate(90deg)
+	-o-transform rotate(90deg)
+	top 35.8em
+	left 56em
+	
 
 
 
