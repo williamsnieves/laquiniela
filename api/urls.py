@@ -18,5 +18,17 @@ urlpatterns = patterns(
 	url(r'^positions/qnlgroup/$', 'group_position_qnl'),
 	url(r'^quiniela/octavos/$', 'octavos_qnl'),
 	url(r'^quiniela/cuartos/$', 'cuartos_qnl'),
+	url(r'^quiniela/semis/$', 'semis_qnl'),
+	url(r'^quiniela/final/$', 'final_qnl'),
+	url(r'^quiniela/octavos/update$', 'octavos_update'),
+	url(r'^quiniela/cuartos/update$', 'cuartos_update'),
+	url(r'^quiniela/semis/update$', 'semifinal_update'),
+	url(r'^quiniela/final/update$', 'final_update'),
+	url(r'^quiniela/octavos/progress$', 'get_progressoctavos_qnl'),
+	url(r'^quiniela/cuartos/progress$', 'get_progresscuartos_qnl'),
+	url(r'^quiniela/semis/progress$', 'get_progresssemis_qnl'),
+	url(r'^quiniela/final/progress$', 'get_progressfinal_qnl'),
+	url(r'^quiniela/invitation/$', 'get_progressfinal_qnl'),
+	url(r'^quiniela/invitation/save$', 'get_progressfinal_qnl'),
 
 )

@@ -14,6 +14,7 @@ class Knockout(models.Model):
 	clasificado = models.CharField(max_length=50)
 	puntuacion = models.IntegerField()
 	ruta = models.CharField(max_length=500)
+	progress_octavos = models.CharField(max_length=6,default='')
 
 	def __str__(self):
 		return self.cod_qnl
@@ -22,63 +23,6 @@ class ViewOctavos:
 	def getMatchesOctavos(self,cod_qnl=None):
 		cursor = connection.cursor() 
 		cursor.execute("SELECT * FROM vw_octavos_qnl WHERE cod_qnl='"+cod_qnl+"' ORDER BY 4")
-		position_list = []
-		final_list = []
-		position_dict = {}
-
-		for row in cursor.fetchall():
-			p = row
-			position_list.append(p)
-
-		for i in range(len(position_list)):
-			position_dict = dict(cod_qnl=position_list[i][0],grupo=position_list[i][1],team=position_list[i][2],juego=position_list[i][3],clas=position_list[i][4])
-			final_list.append(position_dict)
-
-
-		return final_list
-
-class ViewCuartos:
-	def getMatchesCuartos(self,cod_qnl=None):
-		cursor = connection.cursor() 
-		cursor.execute("SELECT * FROM vw_cuartos_qnl WHERE cod_qnl='"+cod_qnl+"' ORDER BY 4")
-		position_list = []
-		final_list = []
-		position_dict = {}
-
-		for row in cursor.fetchall():
-			p = row
-			position_list.append(p)
-
-		for i in range(len(position_list)):
-			position_dict = dict(cod_qnl=position_list[i][0],grupo=position_list[i][1],team=position_list[i][2],juego=position_list[i][3],clas=position_list[i][4])
-			final_list.append(position_dict)
-
-
-		return final_list
-
-class ViewSemis:
-	def getMatchesSemis(self,cod_qnl=None):
-		cursor = connection.cursor() 
-		cursor.execute("SELECT * FROM vw_semis_qnl WHERE cod_qnl='"+cod_qnl+"' ORDER BY 4")
-		position_list = []
-		final_list = []
-		position_dict = {}
-
-		for row in cursor.fetchall():
-			p = row
-			position_list.append(p)
-
-		for i in range(len(position_list)):
-			position_dict = dict(cod_qnl=position_list[i][0],grupo=position_list[i][1],team=position_list[i][2],juego=position_list[i][3],clas=position_list[i][4])
-			final_list.append(position_dict)
-
-
-		return final_list
-
-class ViewFinal:
-	def getMatchesFinal(self,cod_qnl=None):
-		cursor = connection.cursor() 
-		cursor.execute("SELECT * FROM vw_final_qnl WHERE cod_qnl='"+cod_qnl+"' ORDER BY 4")
 		position_list = []
 		final_list = []
 		position_dict = {}

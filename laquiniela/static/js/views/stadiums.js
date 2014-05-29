@@ -2,9 +2,6 @@ Quiniela.Views.Stadiums = Backbone.View.extend({
 
 	el : $("#stadium-content"),
 
-
-	template: _.template($("#stadium-template").html()),
-
 	initialize : function(){
 		this.render();
 		var stadium  = new Quiniela.Models.Stadium();
@@ -52,8 +49,7 @@ Quiniela.Views.Stadiums = Backbone.View.extend({
 	},
 
 	render : function(){
-		var html = this.template()
-		this.$el.html(html);
+		this.$el.html(_.template($("#stadium-template").html()));
 
 	},
 

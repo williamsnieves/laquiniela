@@ -24,6 +24,10 @@ def estadios(request):
 	return render(request, 'estadios.html', {'username': request.user.username})
 
 @login_required
+def curiosidades(request):
+	return render(request, 'curiosidades.html', {'username': request.user.username})
+
+@login_required
 def quinielas(request):
 	return render(request, 'quiniela.html', {'username': request.user.username})
 

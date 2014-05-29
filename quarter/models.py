@@ -14,6 +14,7 @@ class Quarter(models.Model):
 	clasificado = models.CharField(max_length=50)
 	puntuacion = models.IntegerField()
 	ruta = models.CharField(max_length=500)
+	progress_cuartos = models.CharField(max_length=6,default='')
 
 	def __str__(self):
 		return self.cod_qnl
@@ -21,7 +22,7 @@ class Quarter(models.Model):
 class ViewCuartos:
 	def getMatchesCuartos(self,cod_qnl=None):
 		cursor = connection.cursor() 
-		cursor.execute("SELECT * FROM vw_cuartos_qnl WHERE codquin='"+cod_qnl+"' ORDER BY 4")
+		cursor.execute("SELECT * FROM vw_cuartos_qnl WHERE cod_qnl='"+cod_qnl+"' ORDER BY 2")
 		position_list = []
 		final_list = []
 		position_dict = {}

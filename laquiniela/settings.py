@@ -78,7 +78,13 @@ INSTALLED_APPS = (
     'knockout',
     'quarter',
     'semifinal',
-    'final',   
+    'final',
+    'invitations',
+    'curiosidades',
+    'calendars_knockout',
+    'calendars_quarter',
+    'calendars_semifinal',
+    'calendars_final',   
 )
 
 MIDDLEWARE_CLASSES = (

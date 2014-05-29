@@ -57,6 +57,11 @@ Quiniela.Router = Backbone.Router.extend({
 	eliminatoriasHandler : function(){
 		$(".full-section").css("background","url(../static/img/bghand.png) 100% 100%")
 		var oficial = new Quiniela.Views.Eliminatorias();
+	},
+
+	curiosidadesHandler : function(){
+		$(".full-section").css("background","url(../static/img/bghand.png) 100% 100%")
+		var oficial = new Quiniela.Views.Curiosidades();
 	}
 
 })

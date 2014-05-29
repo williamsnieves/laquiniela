@@ -2,8 +2,6 @@ Quiniela.Views.Eliminatorias = Backbone.View.extend({
 
 	el : $("#eliminatoria-content"),
 
-	template: _.template($("#eliminatoria-template").html()),
-
 	initialize : function(){
 		this.render();
 
@@ -23,8 +21,7 @@ Quiniela.Views.Eliminatorias = Backbone.View.extend({
 	},
 
 	render : function(){
-		var html = this.template()
-		this.$el.html(html);
+		this.$el.html(_.template($("#eliminatoria-template").html()));
 	}
 
 	

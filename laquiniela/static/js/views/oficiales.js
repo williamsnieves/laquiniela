@@ -5,7 +5,6 @@ Quiniela.Views.Oficiales = Backbone.View.extend({
 	events: {
 		"click #group-list" : "groupHandler"
 	},
-	template: _.template($("#posiciones-template").html()),
 
 	initialize : function(){
 		this.render();
@@ -44,8 +43,7 @@ Quiniela.Views.Oficiales = Backbone.View.extend({
 	},
 
 	render : function(){
-		var html = this.template()
-		this.$el.html(html);
+		this.$el.html(_.template($("#posiciones-template").html()));
 	},
 
 	groupHandler : function(e){

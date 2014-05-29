@@ -51,25 +51,7 @@
 				</ul>-->
 				<ul>
 			      <li class="selected"><a href="/dashboard/"><span>Inicio</span></a></li>
-			      <li><a href="#"><span>Curiosidades</span></a>
-						<ul class="submenu1">
-				            <li>
-				                <a href="#"><span>Mundiales pasados</span></a>
-				            </li>
-				            <li>
-				                <a href="#"><span>Jugadores Destacados</span></a>
-				            </li>
-				            <li>
-				                <a href="#"><span>Equipos Historicos</span></a>
-				            </li>
-				            <li>
-				                <a href="#"><span>Balon</span></a>
-				            </li>
-				            <li>
-				                <a href="#"><span>Palmares</span></a>
-				            </li>
-        				</ul>
-			      </li>
+			      <li><a href="/curiosidades"><span>Curiosidades</span></a></li>
 			      <li><a href="#"><span>Brasil 2014</span></a>
 						<ul class="submenu1">
 				            <li>
@@ -151,6 +133,10 @@
 		<section class="row" id="eliminatoria-content">
 				
 		</section>	
+
+		<section class="row" id="curiosidad-content">
+				
+		</section>	
 	</section>
 	
 	
@@ -186,6 +172,11 @@
     <script src="{% static 'js/models/quiniela_fase.js' %}"></script>
     <script src="{% static 'js/models/quiniela_eliminatoria.js' %}"></script>
     <script src="{% static 'js/models/quiniela_eliminatoriaoficial.js' %}"></script>
+    <script src="{% static 'js/models/quiniela_octavos.js' %}"></script>
+    <script src="{% static 'js/models/quiniela_cuartos.js' %}"></script>
+    <script src="{% static 'js/models/quiniela_semis.js' %}"></script>
+    <script src="{% static 'js/models/quiniela_final.js' %}"></script>
+    <script src="{% static 'js/models/octavos_update.js' %}"></script>
     <script src="{% static 'js/collections/teams.js' %}"></script>
     <script src="{% static 'js/views/teams.js' %}"></script>
     <script src="{% static 'js/views/stadiums.js' %}"></script>
@@ -196,6 +187,7 @@
     <script src="{% static 'js/views/final.js' %}"></script>
     <script src="{% static 'js/views/oficiales.js' %}"></script>
     <script src="{% static 'js/views/eliminatorias.js' %}"></script>
+    <script src="{% static 'js/views/curiosidades.js' %}"></script>
 
     <script>
       $(document).foundation();

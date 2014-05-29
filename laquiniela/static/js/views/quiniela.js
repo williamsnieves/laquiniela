@@ -9,8 +9,6 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 		"click .btn-eliminatoria" : "showEliminatoriaHandler"
 	},
 
-	template: _.template($("#quiniela-template").html()),
-
 	initialize : function(){
 		this.render();
 		//console.log($('#myModal'))
@@ -57,8 +55,7 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 	},
 
 	render : function(){
-		var html = this.template()
-		this.$el.html(html);
+		this.$el.html(_.template($("#quiniela-template").html()));
 	},
 
 	quinielaHandler : function(e){

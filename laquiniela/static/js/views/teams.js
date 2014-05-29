@@ -2,9 +2,6 @@ Quiniela.Views.Teams = Backbone.View.extend({
 
 	el : $("#team-content"),
 
-
-	template: _.template($("#team-template").html()),
-
 	initialize : function(){
 		this.render();
 	},
@@ -15,8 +12,7 @@ Quiniela.Views.Teams = Backbone.View.extend({
 	},
 
 	render : function(){
-		var html = this.template()
-		this.$el.html(html);
+		this.$el.html(_.template($("#team-template").html()));
 
 	},
 
