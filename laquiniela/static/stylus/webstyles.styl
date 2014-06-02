@@ -36,6 +36,9 @@ figure
 #stadium-container
 	margin-top 2em
 
+#curiosidades-container
+	margin-top 2em
+
 #team-container h3.titulo-team
 	color white
 	margin-bottom 0
@@ -125,6 +128,74 @@ figure
 	position absolute
 	right -8.2em
 	top 11.5em
+
+.curiosidades-campeon
+	border-bottom 67px solid verde_medio
+	border-left 50px solid transparent
+	height 0
+	width 200px
+	position absolute
+	right 16.8em
+	top 4.5em
+
+.curiosidades-campeon h3
+	margin-top 0.8em
+	position relative
+	left 0
+	font-size 1.3em
+	color white
+
+
+.curiosidades-campeon span
+	position relative
+	top 0.6em
+	color azul_claro
+
+
+.curiosidades-campeon-content
+	border-bottom 67px solid verde_medio
+	border-right 50px solid transparent
+	height 0
+	width 200px
+	position absolute
+	right 15.8em
+	top 4.5em
+	-webkit-transform rotate(180deg)
+
+.curiosidades-subcampeon
+	border-bottom 67px solid verde_medio
+	border-right 50px solid transparent
+	height 0
+	width 200px
+	position absolute
+	right -3.2em
+	top 6.5em
+
+.curiosidades-subcampeon h3
+	float right
+	margin-top 0.5em
+	position relative
+	left 0.2em
+	font-size 1.3em
+	color white
+
+
+.curiosidades-subcampeon span
+	float right
+	margin-top 0.6em
+	color azul_claro
+
+
+.curiosidades-subcampeon-content
+	border-bottom 67px solid verde_medio
+	border-left 50px solid transparent
+	height 0
+	width 200px
+	position absolute
+	right -2.2em
+	top 6.5em
+	-webkit-transform rotate(180deg)
+	
 
 #copas-content-back ul.copas_ganadas
 	list-style none
@@ -525,6 +596,40 @@ figure
 	top 20em
 	position absolute
 
+#trapezoide2 p
+	padding 1em
+	color white
+
+.team-desc
+	border 1px solid red
+	height 170px
+
+.wrap-paticipacion
+	position relative
+
+.wrap-paticipacion h2
+	position absolute
+	top -0.2em
+	color azul_claro
+	font-weight bold
+	left 0.2em
+	font-size 54px
+
+.wrap-paticipacion h6
+	position absolute
+	top 3em
+	color azul_claro
+	left -0.7em
+	text-align center
+
+.wrap-paticipacion h5
+	position absolute
+	top 2.8em
+	color azul_claro
+	left -0.8em
+	text-align center
+	font-size 23px
+
 
 #lineqn1
 	width 1px
@@ -919,6 +1024,35 @@ figure
 
 #menu-dash ul li a
 	color white
+
+
+#menu-dash ul li .submenu-dash
+	display none
+	list-style none
+	background rgba(0,167,255,0.7)
+	position absolute
+	//border 1px solid red 
+	width 78%
+	left 0
+	margin-left -8.7em
+	margin-top -1.77em
+	z-index 999999
+
+#menu-dash ul li
+	&:hover .submenu-dash
+		display block
+
+.submenu-dash li
+	padding 0.2em
+	border-bottom 1px dotted white
+	color white
+	text-align center
+
+.submenu-dash li:last-child
+	border-bottom none
+
+.submenu-dash li a
+	color white
 	
 
 .grama-content
@@ -1120,7 +1254,6 @@ figure
 	position absolute
 	top 0
 	right 0
-	overflow hidden
 
 .user-content a
 	display block
@@ -1483,9 +1616,9 @@ figure
 
 #description-mundiales .mundiales-description
 	background-color #000
-	opacity 0.5
+	opacity 0.7
 	width 100%
-	height 400px
+	height 300px
 	position absolute
 
 #description-mundiales .container-description p
@@ -1496,7 +1629,7 @@ figure
 
 .container-description h3
 	color white
-	font-size 4em
+	font-size 3em
 
 .container-description h3 span
 	color verde_claro
@@ -1509,6 +1642,477 @@ figure
 .greenbox-subcampeon
 	background verde_medio
 
+.versus-mundiales
+	position relative
+	width 128px
+	height 171px
+	top 2em 
+	left 12em
+
+.versus-mundiales img
+	z-index 999999
+	position absolute
+	
+
+.versus-mundiales p
+	position absolute
+	top 0.5em 
+	left 0.3em
+	font-size 4em
+	color azul_claro
+	z-index 9999999
 
 
+.curiosidades-tercero
+	border-bottom 67px solid verde_medio
+	border-left 50px solid transparent
+	height 0
+	width 200px
+	position absolute
+	right 16.8em
+	top 14.5em
 
+.curiosidades-tercero h3
+	margin-top 0.8em
+	position relative
+	left 0
+	font-size 1.3em
+	color white
+
+
+.curiosidades-tercero span
+	color azul_claro
+	position relative
+	top 0.6em
+
+
+.curiosidades-tercero-content
+	-webkit-transform rotate(180deg)
+	border-bottom 67px solid verde_medio
+	border-right 50px solid transparent
+	height 0
+	position absolute
+	right 15.8em
+	top 14.5em
+	width 200px
+
+.curiosidades-cuarto
+	border-bottom 67px solid verde_medio
+	border-right 50px solid transparent
+	height 0
+	position absolute
+	right -0.2em
+	top 14.5em
+	width 200px
+
+.curiosidades-cuarto h3
+	color white
+	float right
+	font-size 1.3em
+	left 0.2em
+	margin-top 0.5em
+	position relative
+
+
+.curiosidades-cuarto span
+	float right
+	margin-top 0.6em
+	color azul_claro
+
+
+.curiosidades-cuarto-content
+	-webkit-transform rotate(180deg)
+	border-bottom 67px solid verde_medio
+	border-left 50px solid transparent
+	height 0
+	position absolute
+	right 0.8em
+	top 14.5em
+	transform rotate(180deg)
+	width 200px
+
+.versus-mundiales-rotado
+	height 171px
+	left 10em
+	position relative
+	top 1.5em 
+	width 128px
+
+
+.versus-mundiales-rotado img
+	-webkit-transform rotate(90deg)
+	height 141px
+	position absolute
+	transform rotate(90deg)
+	width 98px
+	z-index 999999
+	
+
+.versus-mundiales-rotado p
+	color azul_claro
+	font-size 2.5em
+	left 0.5em
+	position absolute
+	top 1em 
+	z-index 9999999
+
+
+.curiosidades-curiosidad
+	border-bottom 67px solid verde_medio
+	border-left 50px solid transparent
+	height 0
+	position absolute
+	right 16.8em
+	top 22.5em
+	width 200px
+	z-index 9999
+
+.curiosidades-curiosidad h3
+	color white
+	font-size 1.3em
+	left 0
+	margin-top 0.8em
+	position relative
+
+
+.curiosidades-curiosidad-content
+	-webkit-transform rotate(180deg)
+	border-bottom 67px solid verde_medio
+	border-right 50px solid transparent
+	height 0
+	position absolute
+	right 15.8em
+	top 22.5em
+	width 200px
+	z-index 9999
+
+.container-curiosity .mundiales-curiosidad
+	background-color #000
+	height 200px
+	margin-top 4em
+	opacity 0.7
+	position absolute
+	width 100%
+
+.container-curiosity p
+	color white
+	margin-top 5em
+	padding 1em
+	position absolute
+	text-align justify
+	
+.estadisticas-mundiales ul
+	list-style none
+	margin -2em
+	position relative
+	top 18em
+
+.estadisticas-mundiales ul li
+	display inline-block
+	padding 0.8em
+	
+
+.estadisticas-mundiales ul li figure
+	position relative
+
+.estadisticas-mundiales ul li img
+	-webkit-transform rotate(90deg)
+	transform rotate(90deg)
+
+.estadisticas-mundiales ul li p
+	color azul_claro
+	font-size 1.8em
+	left 1.5em
+	position absolute
+	top 2.3em
+	z-index 999
+
+.estadisticas-mundiales ul li h4
+	color azul_claro
+	left 1.8em
+	position absolute
+	top 1.3em
+	z-index 999
+
+.estadisticas-mundiales ul li
+	&:first-child h4
+		left 1.2em
+		top 1.3em
+
+.estadisticas-mundiales ul li
+	&:first-child p
+		font-size 0.8em
+		left 2.8em
+		top 5.3em
+		width 10%
+
+.estadisticas-mundiales ul li
+	&:last-child h4
+		font-size 0.9em
+		font-weight bold
+		left 1.9em
+		top 2em
+
+.estadisticas-mundiales ul li
+	&:last-child p
+		font-size 1.2em
+		left 1.5em
+		top 3.5em
+		width 10%
+
+
+#content-left-dashboard,#content-center-dashboard,#content-right-dashboard
+	height auto
+	padding 0
+
+
+#content-left-dashboard div
+	margin 1px
+	padding 20px
+
+#content-left-dashboard
+	overflow hidden
+
+#content-left-dashboard .item
+	float left
+	height 200px
+	margin 1%
+	width 48%
+
+#content-center-dashboard .item
+	background gris_claro
+	float left
+	height 102px
+	margin 1%
+	width 48%
+	
+.tweet-content
+	width 60%
+
+#content-center-dashboard .item-partidos
+	background azul_claro
+	height 280px
+	margin 1.5% 1% 0 1%
+
+#content-center-dashboard .item-posiciones
+	background azul_claro
+	height 220px
+	margin 3% 1% 0 1%
+
+.item-tweet	
+	background verde_medio
+	height 200px
+	margin 1%
+	overflow hidden
+	width 98%
+
+#content-right-dashboard .item-ranking
+	background gris_claro
+	height 320px
+	margin 3% 1% 0 1%
+
+#content-right-dashboard .item-partidos-date
+	background gris_claro
+	height 290px
+	margin 3% 1% 0 1%
+
+.partidos-dashboard
+	position relative
+
+.partidos-dashboard .team-a
+	background verde_medio
+	height 99%
+	left 0
+	position absolute
+	top 0
+	width 50%
+
+.partidos-dashboard .team-a .team
+	color azul_claro
+	font-size 1.5em
+	margin -1em 0 0 -0.5em
+
+.partidos-dashboard .team-a .result
+	color azul_claro
+	font-size 5em
+	margin -0.5em 0 0 0.5em
+
+.partidos-dashboard .team-b .team
+	color azul_claro
+	font-size 1.5em
+	margin -1em 0 0 2.5em
+
+.partidos-dashboard .team-b .result
+	color azul_claro
+	font-size 5em
+	margin -0.5em 0 0 -0.1em
+
+.partidos-dashboard .team-b
+	background verde_claro
+	height 99%
+	position absolute
+	right 0
+	top 0
+	width 50%
+
+.partidos-dashboard .team-place
+	background azul_claro
+	bottom 0
+	height 34%
+	left 0
+	position absolute
+	width 99%
+	z-index 99999
+
+.partidos-dashboard span
+	color azul_claro
+	font-size 10px
+	left 11.3em
+	position absolute
+	top 6em
+	z-index 999999
+	
+
+.team-dashboard
+	margin-top 0
+
+.team-dashboard h3.titulo-team
+	color white
+	float left
+	font-size 0.8em
+	margin-bottom 0
+
+#container-group-dashboard ul
+	list-style none
+	margin -0.2em 0 0 0 
+
+#container-group-dashboard ul li
+	-webkit-transition 0.5s all ease
+	color gris_claro
+	cursor pointer
+	display inline-block
+	font-size 1em
+	padding 0 0 0 0.6em
+
+#container-group-dashboard ul li:hover
+	color verde_claro
+
+#container-team-quiniela h3
+	display none
+	width 100%
+
+.table-results table tbody tr
+	&:nth-child(odd)
+		background gris_claro
+
+.table-results table tbody tr td
+	color white
+	margin-bottom 5em
+	padding 0 0.2em
+
+.table-results table tbody tr td img
+	width 35px
+	height 26px
+
+.table-results table tbody tr td span
+	color white
+	font-weight bold
+
+.table-results table tbody tr td span.input-read
+	border-bottom 1px solid white
+	border-left 1px solid white
+	border-right 1px solid white
+	border-top 1px solid white
+	font-weight normal
+	padding 0.2em
+
+.table-positions table
+	height 170px
+	margin-top 1em
+	width 100%
+
+.table-positions table thead tr th
+	border-right 1px solid white
+	color white
+
+.table-positions table tbody tr td
+	border-bottom 1px solid white
+	border-right 1px solid white
+	border-top 1px solid white
+	color white
+	margin-bottom 5em
+	padding 0 0.2em
+
+.table-positions table tbody tr td img
+	height 26px
+	width 35px
+
+.table-positions table tbody tr td span
+	color white
+	font-weight bold
+
+.table-positions table tbody tr td span.input-read
+	border-bottom 1px solid white
+	border-left 1px solid white
+	border-right 1px solid white
+	border-top 1px solid white
+	font-weight normal
+	padding 0.2em
+
+.btn-invite
+	margin 1.5em
+
+
+.content-puntos
+	position absolute
+	top 0
+	left -4em
+	margin-top 0.5em
+	display none
+
+.content-puntos span
+	color white
+	display block
+	text-align center
+
+.content-puntos span
+	&:first-child
+		font-weight bold
+		font-size 3em
+
+
+.invitations
+	background verde_claro
+	border 1px solid azul_claro
+	box-shadow 5px 5px 5px rgba(0,0,0,0.5)
+	height 400px;
+	position relative
+	display none
+
+.wrapper-form
+	position relative
+	top 6em
+	left 20em
+	z-index 9999
+
+
+.invitations .wrapper-form form input
+	height 70px
+	font-size 2em
+	color azul_claro
+
+.btn-send
+	display block
+
+#close-invitation
+	position absolute
+	top 0
+	right 0
+	color azul_claro
+	margin 1em 1em 0 0
+
+#close-invitation
+	&:hover
+		cursor pointer
+
+	

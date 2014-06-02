@@ -4,6 +4,72 @@ Quiniela.Views.Teams = Backbone.View.extend({
 
 	initialize : function(){
 		this.render();
+
+		var equipo = new Quiniela.Models.Team()
+
+		equipo.urlRoot =  "/api/equipos/?grupo=A";
+
+		/*equipo.fetch({
+			success : function(equipo){				
+
+				var equipos = [];
+				var obj = {};
+				var names = {};
+
+				$("#team-list").html(""); 
+
+				$.each(equipo.attributes,function(c,v){
+					
+					names = {
+						name : v.country_team,
+						prefijo : v.name_team
+					}
+					equipos.push(names);
+				})
+
+				obj.teams = equipos; 
+				console.log(obj)
+				
+				$.each(obj.teams,function(k,val){
+					$("#team-list").append("<li data-prefijo ="+val.prefijo+">"+val.name+"</li>");
+				})
+				
+			},
+			error : function(error){
+				console.log(error)
+			}
+		})*/
+
+		var equipo = new Quiniela.Models.Team()
+
+		equipo.urlRoot =  "/api/equipos/BRA";
+
+		equipo.fetch({
+			success : function(info){				
+
+				$.each(info.attributes,function(k,val){
+					console.log(val)
+
+					$("#trapezoide2").html("<p>"+val.description+"</p>");
+					$("#mundiales-content h2").text(val.mundiales);
+					
+					for(var i = 0; i < val.cant_titles ; i++){
+						var countcopa = i+1
+						$(".copas_ganadas").append("<li class='copas-activas' id='copa"+countcopa+"'><img src='../static/img/copa_activa.png' alt='' width='23' height='56'></li>")
+						//$(".copas_ganadas").append("<li><img src='../static/img/copa_inactiva.png' alt='' width='23' height='56'></li>")
+					}
+					
+					switch(val.name_team){
+						case "BRA":
+							$(".full-section").css("background","url(../static/img/teams/brasil/brasil.png) 100% 100%")
+							break;						
+					}
+				})
+			},
+			error : function(error){
+				console.log(error)
+			}
+		})
 	},
 
 	events : {
@@ -68,7 +134,8 @@ Quiniela.Views.Teams = Backbone.View.extend({
 				$.each(info.attributes,function(k,val){
 					console.log(val)
 
-					$("#trapezoide2").text(val.description);
+					
+					$("#trapezoide2").html("<p>"+val.description+"</p>");
 					$("#mundiales-content h2").text(val.mundiales);
 					
 					for(var i = 0; i < val.cant_titles ; i++){

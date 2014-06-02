@@ -12,7 +12,7 @@ def init_app(request):
 	return render(request, 'landing.html')
 
 @login_required
-def dashboard(request):
+def dashboard(request,cod_qnl=None):
 	return render(request, 'app.html', {'username': request.user.username})
 
 @login_required
@@ -30,6 +30,10 @@ def curiosidades(request):
 @login_required
 def quinielas(request):
 	return render(request, 'quiniela.html', {'username': request.user.username})
+
+@login_required
+def edit_quiniela(request,cod_qnl):
+	return render(request, 'edit_quiniela.html', {'username': request.user.username})
 
 @login_required
 def quinielas_octavos(request):

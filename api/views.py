@@ -15,7 +15,7 @@ from django.core import serializers
 from rest_framework.parsers import JSONParser
 from django.http import HttpResponse
 import json
-
+from django.core.mail import send_mail
 from calendars.models import ViewPosition
 from footballpools.models import FootballPool, ViewPositionQnl, ViewMatchesQnl
 from api.serializers import CalendarSerializer
@@ -24,6 +24,15 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import Http404
 
 # Create your views here.
+
+@api_view(['GET'])
+def get_quinielas(request):
+	if request.method == 'GET':
+		quinielas = FootballPoolUser.objects.filter(username=request.user)
+		#return Response(position)
+		jsonResponse = serializers.serialize("json", quinielas)
+		return HttpResponse(jsonResponse, content_type="application/json")
+		#return HttpResponse(position)
 
 @api_view(['GET'])
 def positions(request):
@@ -37,19 +46,30 @@ def positions(request):
 @api_view(['GET'])
 def invitations(request):
 	if request.method == 'GET':
-		cant = Invitation.objects.filter(username=request.user).filter(invitacion=True).count()
+		cant = Invitation.objects.filter(username=request.user).filter(invitacion=1).count()
 		#return Response(position)
 		#jsonResponse = serializers.serialize("json", position)
 		return HttpResponse(json.dumps({"cant" : cant}), content_type="application/json",status=200)
 		#return HttpResponse(position)
 
-@api_view(['POST'])
+@require_http_methods(["GET", "POST"])
+@csrf_exempt
 def invitations_save(request):
 	if request.method == 'POST':
 		datos = json.loads(request.body.decode())
-		
-		invitacion = Invitation(username=request.user,invitacion=datos['invitacion'])
+
+		invitacion = Invitation(username=request.user,invitacion=datos['data']['invitacion'])
+		print(datos['data']['invitados'][0]['email'])
 		invitacion.save()
+
+		contenido = "Tu amigo "+request.user.first_name+" "+request.user.last_name+" te ha invitado a jugar la quiniela del mundial"
+		contenido+= "en http://www.futbolgamb.com no dejes de entrar y divertirte tratando de asertar los resultados de los partidos y compitiendo contra otros"
+		correos = []	
+
+		for email in datos['data']['invitados']:
+			correos.append(email['email'])
+
+		send_mail('Invitaciones para futbolgamb', contenido, 'from@example.com',correos, fail_silently=False)
 		#return Response(position)
 		#jsonResponse = serializers.serialize("json", position)
 		return HttpResponse(json.dumps({"success" : "true"}), content_type="application/json",status=200)
@@ -253,7 +273,7 @@ def quiniela(request):
 		#updateOctavos = Knockout.filter(cod_qnl=codigo_qnl).update()
 
 		cursor = connection.cursor()
-		cursor.execute("UPDATE knockout_knockout SET cod_qnl = '"+codigo_qnl+"',equipo=vw_octavos_qnl.team FROM vw_octavos_qnl WHERE vw_octavos_qnl.cod_qnl=knockout_knockout.cod_qnl AND  vw_octavos_qnl.clas = knockout_knockout.cod_equipo")
+		cursor.execute("UPDATE knockout_knockout SET cod_qnl = '"+codigo_qnl+"',equipo=vw_octavos_qnl.team FROM vw_octavos_qnl WHERE vw_octavos_qnl.cod_qnl=knockout_knockout.cod_qnl AND  vw_octavos_qnl.clas1 = knockout_knockout.cod_equipo")
 
 		return HttpResponse(json.dumps({"success" : "true"}), content_type="application/json",status=200)
 

@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.create_table('invitations_invitation', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('username', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('invitacion', self.gf('django.db.models.fields.CharField')(default='', max_length=4)),
+            ('invitacion', self.gf('django.db.models.fields.IntegerField')()),
         ))
         db.send_create_signal('invitations', ['Invitation'])
 
@@ -26,7 +26,7 @@ class Migration(SchemaMigration):
         'invitations.invitation': {
             'Meta': {'object_name': 'Invitation'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'invitacion': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '4'}),
+            'invitacion': ('django.db.models.fields.IntegerField', [], {}),
             'username': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         }
     }

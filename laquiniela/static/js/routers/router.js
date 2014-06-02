@@ -1,5 +1,6 @@
 Quiniela.Router = Backbone.Router.extend({
 	routes : {
+		'dashboard/:id' : 'dashboardHandler',
 		'dashboard/' : 'dashboardHandler',
 		'curiosidades/' : 'curiosidadesHandler',
 		'mundial/' : 'mundialHandler',
@@ -8,6 +9,7 @@ Quiniela.Router = Backbone.Router.extend({
 		'equipos/'  : 'equiposHandler',
 		'estadios/'  : 'estadiosHandler',
 		'quiniela/fase-de-grupos' : 'quinielaHandler',
+		'quiniela/:cod_qnl/edit' : 'editHandler',
 		'quiniela/octavos' : 'octavosHandler',
 		'quiniela/cuartos' : 'cuartosHandler',
 		'quiniela/semis' : 'semisHandler',
@@ -62,6 +64,13 @@ Quiniela.Router = Backbone.Router.extend({
 	curiosidadesHandler : function(){
 		$(".full-section").css("background","url(../static/img/bghand.png) 100% 100%")
 		var oficial = new Quiniela.Views.Curiosidades();
+	},
+	editHandler : function(){
+		$(".full-section").css("background","url(../../static/img/bghand.png) 100% 100%")
+		var quiniela = new Quiniela.Views.EditQuinielas();
+	},
+	dashboardHandler : function(id){
+		var dashboard = new Quiniela.Views.Dashboard({_id:id});
 	}
 
 })
