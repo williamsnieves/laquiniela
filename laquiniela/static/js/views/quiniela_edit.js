@@ -17,7 +17,7 @@ Quiniela.Views.EditQuinielas = Backbone.View.extend({
 		var defaultQnl = new Quiniela.Models.QuinielaList()
 		defaultQnl.urlRoot = "/api/quinielas/?group=A&codqnl="+currentCodqnl;
 
-
+		sessionStorage.setItem("grupo","A");
 
 		defaultQnl.fetch({
 			success : function(quiniela){
@@ -102,6 +102,8 @@ Quiniela.Views.EditQuinielas = Backbone.View.extend({
 
 		$(".btn-save").attr("data-type",choosedGroup);
 
+		sessionStorage.setItem("grupo",choosedGroup)
+
 		$(".list-matches").html("");
 
 		var defaultQnl = new Quiniela.Models.QuinielaList()
@@ -125,10 +127,10 @@ Quiniela.Views.EditQuinielas = Backbone.View.extend({
 								"</div>"+
 								"<img src='"+v.flag_a_qnl+"' alt=''>"+
 								"<span class='team-a'>"+v.team_a_qnl+"</span>"+
-								"<input type='number' name='team-a' class='team_input team_input_a' value='"+v.goals_a_qnl+"' max='9' min='0' placeholder='0'/>"+
+								"<input type='number' name='team-a' class='team_input team_input_a' value='"+v.goals_a_qnl+"' max='9' min='0' value='0'/>"+
 								"<img src='"+v.flag_b_qnl+"' alt=''>"+
 								"<span class='team-b'>"+v.team_b_qnl+"</span>"+
-								"<input type='number' name='team-b' class='team_input team_input_b' value='"+v.goals_b_qnl+"' max='9' min='0' placeholder='0'/>"+
+								"<input type='number' name='team-b' class='team_input team_input_b' value='"+v.goals_b_qnl+"' max='9' min='0' value='0'/>"+
 								"</li>";
 					$(".list-matches").append(strqnl);
 				})
@@ -183,7 +185,9 @@ Quiniela.Views.EditQuinielas = Backbone.View.extend({
 	saveQnlHandler : function(e){
 
 		$(".loader-quiniela").show();
-		var currentGroup = $(e.target).attr("data-type");
+		
+		var currentGroup = sessionStorage.getItem("grupo");
+		
 		var currentCodqnl = localStorage.getItem("codigoqnl");
 
 		var listMatch = [];

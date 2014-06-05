@@ -23,7 +23,7 @@ class Calendar(models.Model):
 	order_match = models.CharField(max_length=200,default='')
 
 	def __str__(self):
-		return self.group_match
+		return self.name_match
 
 class ViewMatches:
 	def getMatches(self):

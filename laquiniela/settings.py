@@ -178,7 +178,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
 )
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/'
 
 # API KEY SOCIAL LOGIN
 
@@ -205,6 +205,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '5547d055f6be2728b521e48ec2d89c46'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 #SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('birthday', 'birthday'),('friends','friends'),('picture','picture')]
+SOCIAL_AUTH_TWITTER_PROFILE_EXTRA_PARAMS = {'fields':'picture'}
 
 """SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'picture'}
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields':'friends'}

@@ -13,7 +13,7 @@ def init_app(request):
 
 @login_required
 def dashboard(request,cod_qnl=None):
-	return render(request, 'app.html', {'username': request.user.username})
+	return render(request, 'app.html', {'username': request.user.username, 'provider' : request.user.social_auth.get().provider})
 
 @login_required
 def equipos(request):

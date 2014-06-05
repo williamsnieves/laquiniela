@@ -28,4 +28,4 @@ class Curiosidad(models.Model):
 
 
 	def __str__(self):
-		return self.group_match
+		return self.cod_mundial

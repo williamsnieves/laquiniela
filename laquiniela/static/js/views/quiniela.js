@@ -94,10 +94,10 @@ Quiniela.Views.Quinielas = Backbone.View.extend({
 										"</div>"+
 										"<img src='"+v.flag_a_qnl+"' alt=''>"+
 										"<span class='team-a'>"+v.team_a_qnl+"</span>"+
-										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' placeholder='0'/>"+
+										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' value='0'/>"+
 										"<img src='"+v.flag_b_qnl+"' alt=''>"+
 										"<span class='team-b'>"+v.team_b_qnl+"</span>"+
-										"<input type='number' name='team-b' class='team_input team_input_b' max='9' min='0' placeholder='0'/>"+
+										"<input type='number' name='team-b' class='team_input team_input_b' max='9' min='0' value='0'/>"+
 										"</li>";
 							$(".list-matches").append(strqnl);
 						})
