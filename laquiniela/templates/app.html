@@ -50,7 +50,7 @@
 				            </li>
         			</ul>
 				</li>
-				<li><a href="/quiniela/">Quiniela</a>
+				<li><a href="#">Quiniela</a>
 					<ul class="submenu-dash">
 				            <li>
 				                <a href="/quiniela/fase-de-grupos"><span>Fase de Grupos</span></a>
@@ -69,7 +69,7 @@
 				            </li>
         			</ul>
 				</li>
-				<li><a href="/quiniela/">Mis Quinielas</a>
+				<li><a href="#">Mis Quinielas</a>
 					<ul class="submenu-dash" id="qnl-list">
 				        
         			</ul>
@@ -85,17 +85,25 @@
 				<img src="{% static 'img/dashboard.png' %}" alt="">
 			</figure>
 			<div class="invitations large-12 columns">
+				<div class="alert alert-success" style="display: none"></div>
+		    	<div class="alert alert-warning" style="display: none"></div>
+		    	<div class="alert alert-error" style="display: none"></div>
 				<span id="close-invitation">X</span>
 				<div class="wrapper-form">
 
+					<p>Coloca un correo o una lista de correos separados por coma de los amigos que quieras invitar</p>
 					<form>
 						<input type="text" class="emails" name="emails" id="email-invitation" placeholder="Invitar amigos">
 						<button class="button [tiny small large] btn-send">Enviar Invitacion</button>
+						<img class="loader-invitation" style="display : none;" src="{% static  'img/ajax-loader.gif'%}" />
 					</form>
 				</div>
 			</div>
 			<section class="large-6 columns" id="content-left-dashboard">
-				<div class="item partidos-dashboard" style="border:1px solid blue">
+				<div class="content-matches">
+					
+				</div>
+				<!--<div class="item partidos-dashboard" style="border:1px solid blue">
 					<div class="team-a">
 						<p class="team">xxx</p>
 						<p class="result">2</p>
@@ -141,11 +149,15 @@
 					<div class="team-place">
 						barra
 					</div>
-				</div>
+				</div>-->
 
 
 				<div class="item-tweet" style="margin-left:1%;border:1px solid blue">
-					prueba
+
+					<a class="twitter-timeline" width="450" height="300" href="https://twitter.com/futbolgamb/lists/mundial" data-widget-id="474692554441494528">Tweets de https://twitter.com/futbolgamb/lists/mundial</a>
+						
+
+
 				</div>
 
 			</section>
@@ -236,50 +248,7 @@
 									<th>PTS</th>
 								</thead>
 							  <tbody>
-							    <tr>
-							      <td>BRA</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>				     
-							    </tr>
-							     <tr>
-							      <td>CRO</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>				     
-							    </tr>
-							     <tr>
-							      <td>MEX</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>				     
-							    </tr>
-							     <tr>
-							      <td>CMR</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>
-							      <td>0</td>				     
-							    </tr>
+							    
 
 							  </tbody>
 							</table>
@@ -288,27 +257,33 @@
 				</section>
 				</div>
 				</div>
-				<div class="item" style="border:1px solid blue">
+				<div class="item" style="border:1px solid blue; height: 246px">
 					<a href="#" class="button [tiny small large] btn-invite">Invitar amigos</a>
 				</div>
 
-				<div class="item" style="margin-left:1%;border:1px solid blue">
+				<div class="item" style="margin-left:1%;border:1px solid blue; height: 246px">
 					<a href="#" class="button [tiny small large] btn-invite">Activa otra quiniela</a>
 				</div>
 
 			</section>
 			<section class="large-2 columns" id="content-right-dashboard">
 				<div class="item-ranking" style="border:1px solid blue">
-					ranking
+					<h4>Top 10 Qunielas</h4>
+
 				</div>
 				<div class="item-partidos-date" style="border:1px solid blue">
-					partidos fechas
+					<h4>Noticias FIFA</h4>
+					<div id="ticker1"></div>
 				</div>
 
 			</section>
+
+
+
 	
 
 
 </script>
 
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 {% endblock template %}

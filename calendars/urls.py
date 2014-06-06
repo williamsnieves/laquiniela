@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 	url(r'^api/calendario/$', views.CalendarList.as_view()),
     url(r'^api/calendario/(?P<pk>[0-9]+)$', views.CalendarDetail.as_view()),    
     url(r'^api/calendario/(?P<city_match>.+)/$', views.CalendarList.as_view()),
+    url(r'^api/oficialsmatches/$', views.CalendarioList.as_view()),
 )
 
 

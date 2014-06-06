@@ -1880,7 +1880,7 @@ figure
 	width 48%
 
 #content-center-dashboard .item
-	background gris_claro
+	background url('../img/patron.jpg')
 	float left
 	height 102px
 	margin 1%
@@ -1901,7 +1901,7 @@ figure
 
 .item-tweet	
 	background verde_medio
-	height 200px
+	height auto
 	margin 1%
 	overflow hidden
 	width 98%
@@ -1911,10 +1911,21 @@ figure
 	height 320px
 	margin 3% 1% 0 1%
 
+#content-right-dashboard .item-ranking h4
+	color amarillo_claro
+	font-size 1.2em
+	text-align center
+
 #content-right-dashboard .item-partidos-date
 	background gris_claro
-	height 290px
+	height 433px
 	margin 3% 1% 0 1%
+	overflow hidden
+
+#content-right-dashboard .item-partidos-date h4
+	color amarillo_claro
+	font-size 1.2em
+	text-align center
 
 .partidos-dashboard
 	position relative
@@ -1940,7 +1951,7 @@ figure
 .partidos-dashboard .team-b .team
 	color azul_claro
 	font-size 1.5em
-	margin -1em 0 0 2.5em
+	margin -1em 0 0 1.5em
 
 .partidos-dashboard .team-b .result
 	color azul_claro
@@ -1963,6 +1974,30 @@ figure
 	position absolute
 	width 99%
 	z-index 99999
+
+.partidos-dashboard .team-place .city-dash
+	position absolute
+	top 0
+	left 0
+	font-size 0.8em
+
+.partidos-dashboard .team-place .fecha-dash
+	position absolute
+	top 2em
+	left 0
+	font-size 0.7em
+
+.partidos-dashboard .team-place .fase-title
+	position absolute
+	top 0
+	right 0
+	font-size 0.7em
+
+.partidos-dashboard .team-place .fase-group
+	position absolute
+	top 2em
+	right 0
+	font-size 0.7em
 
 .partidos-dashboard span
 	color azul_claro
@@ -2060,7 +2095,8 @@ figure
 	padding 0.2em
 
 .btn-invite
-	margin 1.5em
+	margin 5.5em 1.5em 1.5em 1.5em
+	box-shadow 5px 5px 5px rgba(0,0,0,0.5)
 
 
 .content-puntos
@@ -2090,16 +2126,26 @@ figure
 	display none
 
 .wrapper-form
-	position relative
-	top 6em
-	left 20em
+	position absolute
+	top 5em
+	left 0em
 	z-index 9999
+	margin 3em 0 0 16em
+
+.wrapper-form p
+	text-align center
+	width 58%
+	display block
+	color azul_claro
+	font-weight bold
 
 
 .invitations .wrapper-form form input
 	height 70px
 	font-size 2em
 	color azul_claro
+	width   50%
+    margin 0 auto
 
 .btn-send
 	display block
@@ -2115,4 +2161,45 @@ figure
 	&:hover
 		cursor pointer
 
+
+#ticker1 .odd 
+	background-color verde_medio
+#ticker1 .even
+	background-color verde_claro
+
+
+.rssFeed
+	font-family Arial, Helvetica, sans-serif
+	font-size small
+	
+	margin-bottom 2em
+
+.rssFeed a 
+	color #444
+	text-decoration none
+	display none
+
+.rssFeed a:hover
+	color: #000
+	text-decoration underline
+
+.rssHeader  
+	padding: 0.2em 0
+
+.rssBody
+	border: 1px solid #666
+
+.rssRow h4, .rssRow p, .rssRow div
+	margin  0
+	padding 0.5em
+	color gris_claro
+.rssMedia
+	display none
+
+#content-left-dashboard div.content-matches
+	padding 0
+	margin 0
+
+.check_input
+	display none
 	

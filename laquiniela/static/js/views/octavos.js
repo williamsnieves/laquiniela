@@ -137,7 +137,7 @@ Quiniela.Views.Octavos = Backbone.View.extend({
 										break
 
 								}
-								var strqnl = "<li id='"+v.clas+"'><div class='qnl_octavos_juego'>"+
+								var strqnl = "<li id='"+v.clas+"' data-flag='false'><div class='qnl_octavos_juego'>"+
 											"<span class='title-estadio'>Juego</span>"+
 											"<span class='name-estadio'>"+v.juego+"</span>"+
 										"</div>"+
@@ -145,9 +145,10 @@ Quiniela.Views.Octavos = Backbone.View.extend({
 											"<span class='title-fecha'>Clasificado</span>"+
 											"<span class='fecha'>"+v.clas+"</span>"+
 										"</div>"+
+										"<input type='checkbox' name='team-a' class='check_input check_input_a'/>"+
 										"<img src='"+ruta+"' alt=''>"+
 										"<span class='team-a'>"+v.team+"</span>"+
-										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' placeholder='0'/>"+
+										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' value='0'/>"+
 										"</li>";
 								$(".list-matches").append(strqnl);
 							})
@@ -173,43 +174,93 @@ Quiniela.Views.Octavos = Backbone.View.extend({
 	saveOctHandler : function(e){
 
 		$(".loader-octavos").show();
-		var currentCodqnl = localStorage.getItem("codigoqnl");
 
-		var listMatch = [];
-		var objMatch = {};
-		var mainMatch = {};
+		/*if(($("#1A").children("input.team_input_a").val() === $("#2B").children("input.team_input_a").val()) || 
+		($("#2D").children("input.team_input_a").val() === $("#1C").children("input.team_input_a").val()) || 
+		($("#2A").children("input.team_input_a").val() === $("#1B").children("input.team_input_a").val()) ||
+		($("#2C").children("input.team_input_a").val() === $("#1D").children("input.team_input_a").val()) ||
+		($("#1E").children("input.team_input_a").val() === $("#2F").children("input.team_input_a").val()) ||
+		($("#1G").children("input.team_input_a").val() === $("#2H").children("input.team_input_a").val()) ||
+		($("#1F").children("input.team_input_a").val() === $("#2E").children("input.team_input_a").val()) ||
+		($("#2G").children("input.team_input_a").val() === $("#1H").children("input.team_input_a").val()))  {*/
+		alert($("#1A").children("input.team_input_a").is(":checked"))
+		if($("#1A").children("input.team_input_a").is(":checked") || $("#2B").children("input.team_input_a").is(":checked")){
+				$("#1A").attr("data-flag","true");
+		}
+		if($("#1A").children("input.team_input_a").val() === $("#2B").children("input.team_input_a").val() || $("#1A").children("input.check_input_a").is(':checked') || $("#2B").children("input.check_input_a").is(':checked')){
+			$("#1A").children("input.check_input_a").fadeIn("slow")
+			$("#2B").children("input.check_input_a").fadeIn("slow")
+			
+			
 
-		$.each($(".list-matches li"), function(c,v){
-			objMatch = {
-				goles : $(v).children("input.team_input_a").val(),
-				partido : $(v).attr("id"),
-				progress : true
+			if($("#1A").attr("data-flag") == "true" || $("#2B").attr("data-flag") == "true"){
+				alert("putaaa")
 			}
+			$(".loader-octavos").hide();
 
-			listMatch.push(objMatch);
-		})
+		}else if($("#2D").children("input.team_input_a").val() === $("#1C").children("input.team_input_a").val()){
+			$("#2D").children("input.check_input_a").fadeIn("slow")
+			$("#1C").children("input.check_input_a").fadeIn("slow")
+			$(".loader-octavos").hide();
+		}else if($("#2C").children("input.team_input_a").val() === $("#1D").children("input.team_input_a").val()){
+			$("#2C").children("input.check_input_a").fadeIn("slow")
+			$("#1D").children("input.check_input_a").fadeIn("slow")
+			$(".loader-octavos").hide();
+		}else if($("#1E").children("input.team_input_a").val() === $("#2F").children("input.team_input_a").val()){
+			$("#1E").children("input.check_input_a").fadeIn("slow")
+			$("#2F").children("input.check_input_a").fadeIn("slow")
+			$(".loader-octavos").hide();
+		}else if($("#1G").children("input.team_input_a").val() === $("#2H").children("input.team_input_a").val()){
+			$("#1G").children("input.check_input_a").fadeIn("slow")
+			$("#2H").children("input.check_input_a").fadeIn("slow")
+			$(".loader-octavos").hide();
+		}else if($("#1F").children("input.team_input_a").val() === $("#2E").children("input.team_input_a").val()){
+			$("#1F").children("input.check_input_a").fadeIn("slow")
+			$("#2E").children("input.check_input_a").fadeIn("slow")
+			$(".loader-octavos").hide();
+		}else if($("#2G").children("input.team_input_a").val() === $("#1H").children("input.team_input_a").val()){
+			$("#2G").children("input.check_input_a").fadeIn("slow")
+			$("#1H").children("input.check_input_a").fadeIn("slow")
+			$(".loader-octavos").hide();
+			
+		}
+		else{
+			var currentCodqnl = localStorage.getItem("codigoqnl");
 
-		mainMatch.data = listMatch
+			var listMatch = [];
+			var objMatch = {};
+			var mainMatch = {};
 
-		console.log(mainMatch);
+			$.each($(".list-matches li"), function(c,v){
+				objMatch = {
+					goles : $(v).children("input.team_input_a").val(),
+					partido : $(v).attr("id"),
+					progress : true
+				}
 
-		var updateOctavosQnl = new Quiniela.Models.QuinielaUpdate();
+				listMatch.push(objMatch);
+			})
 
-		updateOctavosQnl.urlRoot = "/api/quiniela/octavos/update?codigoqnl="+currentCodqnl;
+			mainMatch.data = listMatch
 
-		updateOctavosQnl.save(mainMatch,{
-			success :function(response){
-				$(".loader-octavos").hide();
-				$(".alert-success").text("Su Progreso en octavos se ha almacenado");
-				$(".alert-success").fadeIn("slow").delay(1000).fadeOut("fast");
+			console.log(mainMatch);
 
-			},
-			error: function(err){
-				console.log("error en el servidor")
-				console.log(err);
-			}
-		})
+			var updateOctavosQnl = new Quiniela.Models.QuinielaUpdate();
 
+			updateOctavosQnl.urlRoot = "/api/quiniela/octavos/update?codigoqnl="+currentCodqnl;
 
+			updateOctavosQnl.save(mainMatch,{
+				success :function(response){
+					$(".loader-octavos").hide();
+					$(".alert-success").text("Su Progreso en octavos se ha almacenado");
+					$(".alert-success").fadeIn("slow").delay(1000).fadeOut("fast");
+
+				},
+				error: function(err){
+					console.log("error en el servidor")
+					console.log(err);
+				}
+			})
+		}
 	},
 })

@@ -150,7 +150,7 @@ Quiniela.Views.Cuartos = Backbone.View.extend({
 										"</div>"+
 										"<img src='"+ruta+"' alt=''>"+
 										"<span class='team-a'>"+v.equipo+"</span>"+
-										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' placeholder='0'/>"+
+										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' value='0'/>"+
 										"</li>";
 								$(".list-matches").append(strqnl);
 							})
