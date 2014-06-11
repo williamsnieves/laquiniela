@@ -1,0 +1,37 @@
+{% extends "baseapp.html" %}
+{% load static %}
+{% block content %}
+	
+{% endblock content %}
+
+{% block templates %}
+
+	<script id="cuartos-template" type="text/template">
+			
+			<section class="large-12 columns" id="team-container">
+				<div class="alert alert-success" style="display: none"></div>
+		    	<div class="alert alert-warning" style="display: none"></div>
+		    	<div class="alert alert-error" style="display: none"></div>
+				<div class="large-3 columns">
+					<h3 class="titulo-team">
+						Cuartos de Final
+					</h3>
+									
+			</section>
+
+			<section class="large-12 columns" id="eliminatorias-body">
+				<h2>PARTIDOS</h2>
+				
+				<section class="large-12 columns partidos-quiniela">
+					<ul class="list-matches list-octavos">				
+						
+					</ul>
+					<button class="button btn-save">Guardar Cuartos</button>
+					<a href="/quiniela/semis" class="button btn-eliminatoria">Ver Semis</a>
+					<img style="display:none" class="loader-cuartos" src="{% static  'img/ajax-loader.gif'%}" />
+				</section>
+			</section>
+			
+	
+	</script>
+{% endblock templates %}

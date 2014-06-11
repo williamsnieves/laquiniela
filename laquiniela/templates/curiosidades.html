@@ -1,0 +1,151 @@
+{% extends "baseapp.html" %}
+{% load static %}
+{% block content %}
+	
+{% endblock content %}
+
+{% block templates %}
+	<script id="curiosidad-template" type="text/template">
+		<section class="large-12 columns" id="curiosidades-container">
+				<div class="large-5 columns">
+					<h3 class="titulo-curiosidades">
+						Mundiales Pasados
+					</h3>
+				</div>
+				<div class="large-7 columns" id="container-sedes">
+					 <div id="content-sedes">
+					 	<ul id="sedes-list">
+							<li data-mundial="1930">1930</li>
+							<li data-mundial="1934">1934</li>
+							<li data-mundial="1938">1938</li>
+							<li data-mundial="1950">1950</li>
+							<li data-mundial="1954">1954</li>
+							<li data-mundial="1958">1958</li>
+							<li data-mundial="1962">1962</li>
+							<li data-mundial="1966">1966</li>
+							<li data-mundial="1970">1970</li>
+							<li data-mundial="1974">1974</li>
+							<li data-mundial="1978">1978</li>
+							<li data-mundial="1982">1982</li>
+							<li data-mundial="1986">1986</li>
+							<li data-mundial="1990">1990</li>
+							<li data-mundial="1994">1994</li>
+							<li data-mundial="1998">1998</li>
+							<li data-mundial="2002">2002</li>
+							<li data-mundial="2006">2006</li>
+							<li data-mundial="2010">2010</li>	
+					 	</ul>
+					 </div>					
+				</div>
+
+				<div class="large-12 columns" id="stadium-info-container">
+						 <section class="large-6 columns" id="description-mundiales">
+						 	<div class="container-description">
+						 		<h3><span></span></h3>
+						 		<div class="mundiales-description">
+						 		
+						 		</div>
+						 		<p class="curiosidad-description"></p>
+						 	</div>
+							<div  class="estadisticas-mundiales">
+								<ul>
+							 		<li><figure class="goleador"><h4>Copa</h4><p>nombre</p><img src="{% static 'img/cuadro.png' %}" alt=""></figure></li>
+							 		<li><figure class="goles"><h4>Cant. Equipos</h4><p>nombre</p><img src="{% static 'img/cuadro.png' %}" alt=""></figure></li>
+							 		<li><figure class="balonoro"><h4>Cant. Partidos</h4><p>nombre</p><img src="{% static 'img/cuadro.png' %}" alt=""></figure></li>
+						 		</ul>
+							</div>
+						 	
+						 	
+						 </section>
+						 
+						 <section class="large-6 columns" id="partidos-stadium">
+						 	<div class="container-final">
+						 		<div class="greenbox-campeon">
+						 			<div class="curiosidades-campeon-content">
+						
+									</div>
+									<div class="curiosidades-campeon">
+										<span>campeon</span>
+						 				<h3></h3>
+									</div>
+						 			
+						 		</div>
+						 		<div class="versus-mundiales">
+						 			<img src="{% static 'img/cuadro.png' %}" alt="">
+						 			<p>VS</p>
+						 		</div>
+						 		<div class="greenbox-subcampeon">						 			
+						 			<div class="curiosidades-subcampeon-content">
+						
+									</div>
+									<div class="curiosidades-subcampeon">
+										<span>subcampeon</span>
+						 			<h3></h3>
+									</div>
+						 		</div>
+
+						 	</div>
+
+						 	<div class="container-losers">
+						 		<div class="greenbox-campeon">
+						 			<div class="curiosidades-tercero-content">
+						
+									</div>
+									<div class="curiosidades-tercero">
+										<span>Tercero</span>
+						 				<h3></h3>
+									</div>
+						 			
+						 		</div>
+						 		<div class="versus-mundiales-rotado">
+						 			<img src="{% static 'img/cuadro.png' %}" alt="">
+						 			<p>VS</p>
+						 		</div>
+						 		<div class="greenbox-subcampeon">						 			
+						 			<div class="curiosidades-cuarto-content">
+						
+									</div>
+									<div class="curiosidades-cuarto">
+										<span>Cuarto</span>
+						 			<h3></h3>
+									</div>
+						 		</div>
+
+						 	</div>
+
+						 	<div class="container-curiosidad">
+						 		<div class="greenbox-campeon">
+						 			<div class="curiosidades-curiosidad-content">
+						
+									</div>
+									<div class="curiosidades-curiosidad">
+						 				<h3>Sabias Que....</h3>
+						 				<div class='wrapper-curiosity'>
+							 				<p class='cant-gol'>Cantidad de Goles : <span>0</span></p>
+							 				<p class='pro-gol'>Promedio de Goles : <span></span></p>
+							 				<p class='cant-golea'>Cant. de Goles Goleador : <span></span></p>
+							 				<p class='golea'>Goleadores : <span></span></p>
+						 				</div>
+									</div>									
+						 			
+						 		</div>
+
+						 		<div class="container-curiosity">
+								 		<div class="mundiales-curiosidad">
+								 		
+								 		</div>
+								 		<p>
+								 		</p>
+							 		</div>
+
+						 	</div>
+						 	
+						 	
+						 </section>			 
+				</div>
+
+				
+		</section>	
+	
+	</script>
+{% endblock templates %}

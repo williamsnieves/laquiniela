@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+{% load static %}
+{% block menu %}
+	<section class="header-content row">
+		<figure class="logo">
+			<img src="{% static 'img/logo.png' %}" width="154" height="40" alt="">
+		</figure>
+		<div class="user-content">
+				<div class="content-puntos">
+					<span>00</span>
+					<span>puntos</span>
+					
+				</div>
+				<figure class="left">
+					{% if provider == "facebook"%}
+						<img style="width: 50px; height=50px; border-radius: 50%" src="http://graph.facebook.com/{{user.username}}/picture?type=large" alt="">
+					{% endif %}
+
+					{% if provider == "twitter"%}
+						<img style="width: 50px; height=50px; border-radius: 50%" src="https://api.twitter.com/1.1/users/show.json?user_id=614749934" alt="">
+					{% endif %}
+
+				</figure>
+				<span class="username">{{username}}</span>
+				<a href="{% url 'log-out' %}">Logout</a>
+
+		</div>
+		<a class="btn-menu" href="#"><span>Menu</span></a>
+		<nav id="menu-dash">
+			<ul>
+				<li><a href="/dashboard/">Inicio</a></li>
+				<li><a href="/curiosidades/">Curiosidades</a></li>
+				<li><a href="#">Brasil 2014</a>
+						<ul class="submenu-dash">
+				            <li>
+				                <a href="/estadios"><span>Sedes/Estadios</span></a>
+				            </li>
+				            <li>
+				                <a href="/equipos"><span>Equipos</span></a>
+				            </li>
+        				</ul>
+        		</li>
+				<li><a href="#">Posiciones</a>
+					<ul class="submenu-dash">
+				            <li>
+				                <a href="/fase-de-grupos"><span>Fase de Grupos</span></a>
+				            </li>
+				            <li>
+				                <a href="/eliminatorias"><span>Eliminatorias</span></a>
+				            </li>
+        			</ul>
+				</li>
+				<li><a href="#">Quiniela</a>
+					<ul class="submenu-dash">
+				            <li>
+				                <a href="/quiniela/fase-de-grupos"><span>Fase de Grupos</span></a>
+				            </li>
+				            <li>
+				                <a href="/quiniela/octavos"><span>Octavos</span></a>
+				            </li>
+				            <li>
+				                <a href="/quiniela/cuartos"><span>Cuartos</span></a>
+				            </li>
+				            <li>
+				                <a href="/quiniela/semis"><span>Semis</span></a>
+				            </li>
+				            <li>
+				                <a href="/quiniela/final"><span>Final</span></a>
+				            </li>
+        			</ul>
+				</li>
+				<li><a href="#">Mis Quinielas</a>
+					<ul class="submenu-dash" id="qnl-list">
+				        
+        			</ul>
+				</li>
+			</ul>
+		</nav>
+	</section>	
+{% endblock menu %}	
+{% block template %}
+<script id="dashboard-template" type="text/template">
+	
+			<figure>
+				<img src="{% static 'img/dashboard.png' %}" alt="">
+			</figure>
+			<div class="invitations large-12 columns">
+				<div class="alert alert-success" style="display: none"></div>
+		    	<div class="alert alert-warning" style="display: none"></div>
+		    	<div class="alert alert-error" style="display: none"></div>
+				<span id="close-invitation">X</span>
+				<div class="wrapper-form">
+
+					<p>Coloca un correo o una lista de correos separados por coma de los amigos que quieras invitar</p>
+					<form>
+						<input type="text" class="emails" name="emails" id="email-invitation" placeholder="Invitar amigos">
+						<button class="button [tiny small large] btn-send">Enviar Invitacion</button>
+						<img class="loader-invitation" style="display : none;" src="{% static  'img/ajax-loader.gif'%}" />
+					</form>
+				</div>
+			</div>
+			<section class="large-6 columns" id="content-left-dashboard">
+				<div class="content-matches">
+					
+				</div>
+				<!--<div class="item partidos-dashboard" style="border:1px solid blue">
+					<div class="team-a">
+						<p class="team">xxx</p>
+						<p class="result">2</p>
+					</div>
+					<span>VS</span>
+					<div class="team-b">
+						<p class="team">xxx</p>
+						<p class="result">2</p>
+					</div>
+					<div class="team-place">
+						barra
+					</div>
+				</div>
+				<div class="item partidos-dashboard" style="border:1px solid blue">
+					<div class="team-a">
+						eqp1
+					</div>
+					<div class="team-b">
+						eqp2
+					</div>
+					<div class="team-place">
+						barra
+					</div>
+				</div>
+				<div class="item partidos-dashboard" style="border:1px solid blue">
+					<div class="team-a">
+						eqp1
+					</div>
+					<div class="team-b">
+						eqp2
+					</div>
+					<div class="team-place">
+						barra
+					</div>
+				</div>
+				<div class="item partidos-dashboard" style="border:1px solid blue">
+					<div class="team-a">
+						eqp1
+					</div>
+					<div class="team-b">
+						eqp2
+					</div>
+					<div class="team-place">
+						barra
+					</div>
+				</div>-->
+
+
+				<div class="item-tweet" style="margin-left:1%;">
+
+					<a class="twitter-timeline" width="450" height="300" href="https://twitter.com/futbolgamb/lists/mundial" data-widget-id="474692554441494528">Tweets de https://twitter.com/futbolgamb/lists/mundial</a>
+						
+
+
+				</div>
+
+			</section>
+			<section class="large-4 columns" id="content-center-dashboard">
+				<div class="item-partidos">
+					<section class="large-12 columns team-dashboard">
+						<div  id="container-team-quiniela">
+							<h3 class="titulo-team">
+								Codigo <span id='codigo'></span>
+							</h3>
+						</div>	
+						<div id="container-team">
+							<h3 class="titulo-team">
+								Fase de Grupos
+							</h3>
+						</div>
+						<div id="container-group-dashboard">
+							 <div id="content-group">
+							 	<ul id="group-list">
+									<li>A</li>
+									<li>B</li>
+									<li>C</li>
+									<li>D</li>
+									<li>E</li>
+									<li>F</li>
+									<li>G</li>
+									<li>H</li>	
+							 </ul>
+							 </div>
+							<div class="large-12 columns" id="team-list-container">
+								 <div id="content-team">
+								 	<ul id="team-list">
+
+								 	</ul>
+								 </div>				 
+							</div>
+						</div>
+						<div class="table-results">
+							<table>
+							  <tbody>
+							    
+							   
+							  </tbody>
+							</table>
+						</div>
+						
+				</section>
+				</div>
+				<div class="item-posiciones">
+					<section class="large-12 columns team-dashboard">
+						<div id="container-team">
+							<h3 class="titulo-team">
+								Fase de Grupos
+							</h3>
+						</div>
+						<div id="container-group-dashboard">
+							 <div id="content-group">
+							 	<ul id="group-position" class="positions-dashboard">
+									<li>A</li>
+									<li>B</li>
+									<li>C</li>
+									<li>D</li>
+									<li>E</li>
+									<li>F</li>
+									<li>G</li>
+									<li>H</li>	
+							 </ul>
+							 </div>
+							<div class="large-12 columns" id="team-list-container">
+								 <div id="content-team">
+								 	<ul id="team-list">
+
+								 	</ul>
+								 </div>				 
+							</div>
+						</div>
+						<div class="table-positions">
+							<table>
+								<thead>
+									<th></th>
+									<th>PJ</th>
+									<th>G</th>
+									<th>E</th>
+									<th>P</th>
+									<th>GF</th>
+									<th>GC</th>
+									<th>DIF</th>
+									<th>PTS</th>
+								</thead>
+							  <tbody>
+							    
+
+							  </tbody>
+							</table>
+						</div>
+						
+				</section>
+				</div>
+				</div>
+				<div class="item" style=" height: 246px">
+					<a href="#" class="button [tiny small large] btn-invite">Invitar amigos</a>
+				</div>
+
+				<div class="item" style="margin-left:1%; height: 246px">
+					<a href="#" class="button [tiny small large] btn-invite">Activa otra quiniela</a>
+				</div>
+
+			</section>
+			<section class="large-2 columns" id="content-right-dashboard">
+				<div class="item-ranking">
+					<h4>Top 10 Qunielas</h4>
+					<table id='ranking'>
+						<thead>
+							<tr>
+								<th>Quiniela</th>
+								<th>Pts</th>
+							</tr>							
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+
+				</div>
+				<div class="item-partidos-date">
+					<h4>Noticias FIFA</h4>
+					<div id="ticker1"></div>
+				</div>
+
+			</section>
+
+
+
+	
+
+
+</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+{% endblock template %}

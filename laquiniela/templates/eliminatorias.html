@@ -1,0 +1,84 @@
+{% extends "baseapp.html" %}
+{% load static %}
+{% block content %}
+	
+{% endblock content %}
+
+{% block templates %}
+
+	<script id="eliminatoria-template" type="text/template">			
+		<section class="large-12 columns" id="team-container">
+				<div class="large-3 columns right">
+					<h1 class="titulo-eliminatoria">
+						Eliminatorias
+					</h1>
+				</div>
+				
+		</section>
+
+		<section class="large-12 columns" id="eliminatorias-wrapp">
+			<div class="large-12 columns eliminatorias-wrapp-content">
+				<!-- lado izquierdo octavos ---->
+				<div class="team-octa-a block1a" id="1a"></div>
+				<div class="team-octa-b block2b" id="2b"></div>
+				<div class="team-octa-a block1c" id="1c"></div>
+				<div class="team-octa-b block2d" id="2d"></div>
+				<div class="team-octa-a block1b" id="1b"></div>
+				<div class="team-octa-b block2a" id="2a"></div>
+				<div class="team-octa-a block1d" id="1d"></div>
+				<div class="team-octa-b block2c" id="2c"></div>
+
+				<!-- lado izquierdo cuartos ---->
+				
+				<div class="team-cuarto blockw49" id="w49"></div>
+				<div class="team-cuarto blockw50" id="w50"></div>
+				<div class="team-cuarto blockw53" id="w53"></div>
+				<div class="team-cuarto blockw54" id="w54"></div>
+
+				<!-- lado izquierdo semis ---->
+
+				<div class="team-semis blockw57" id="w57"></div>
+				<div class="team-semis blockw58" id="w58"></div>
+
+				<!-- lado izquierdo final ---->
+
+				<div class="team-final blockw61" id="w61"></div>
+
+				<!-- lado derecho octavos ---->
+				<div class="team-octa-a block1e" id="1e"></div>
+				<div class="team-octa-b block2f" id="2f"></div>
+				<div class="team-octa-a block1g" id="1g"></div>
+				<div class="team-octa-b block2h" id="2h"></div>
+				<div class="team-octa-a block1f" id="1f"></div>
+				<div class="team-octa-b block2e" id="2e"></div>
+				<div class="team-octa-a block1h" id="1h"></div>
+				<div class="team-octa-b block2g" id="2g"></div>
+
+				<!-- lado derecho cuartos ---->
+				
+				<div class="team-cuarto blockw51" id="w51"></div>
+				<div class="team-cuarto blockw52" id="w52"></div>
+				<div class="team-cuarto blockw55" id="w55"></div>
+				<div class="team-cuarto blockw56" id="w56"></div>
+
+				<!-- lado derecho semis ---->
+
+				<div class="team-semis blockw59" id="w59"></div>
+				<div class="team-semis blockw60" id="w60"></div>
+
+				<div class="team-final blockw62" id="w62"></div>
+
+
+			</div>			
+		</section>	
+	
+	</script>
+{% endblock templates %}
+
+{% block footer %}
+<footer class="grama-content">
+			<figure class="logo-quiniela">
+				 <img src="{% static 'img/grama.png' %}" alt="log quiniela">
+			</figure>
+		</footer>
+{% endblock footer %}

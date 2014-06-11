@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Test de la quiniela</h1>
+	<p>Hola <img style="width: 50px; height=50px; border-radius: 50%" src="http://graph.facebook.com/{{user.username}}/picture?type=large" alt="">{{username}} ya tienes acceso para crear tu primera quiniela</p>
+	<p>aqui va la quiniela</p>
+
+	<a href="{% url 'log-out' %}" class="btn btn-danger btn-lg" role="button">Logout</a>
+{% endblock content %}

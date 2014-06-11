@@ -1,0 +1,74 @@
+{% extends "baseapp.html" %}
+{% load static %}
+{% block content %}
+	
+{% endblock content %}
+
+{% block templates %}
+
+	<script id="posiciones-template" type="text/template">			
+		<section class="large-12 columns" id="team-container">
+				<div class="large-3 columns">
+					<h3 class="titulo-team">
+						Fase de Grupos
+					</h3>
+					<h4 class="subtitulo-team">
+						Grupo
+					</h4>
+				</div>
+				<div class="large-9 columns" id="container-group">
+					 <div id="content-group">
+					 	<ul id="group-list">
+							<li>A</li>
+							<li>B</li>
+							<li>C</li>
+							<li>D</li>
+							<li>E</li>
+							<li>F</li>
+							<li>G</li>
+							<li>H</li>	
+					 </ul>
+					 </div>
+					<div class="large-12 columns" id="team-list-container">
+						 <div id="content-team">
+						 	<ul id="team-list">
+
+						 	</ul>
+						 </div>				 
+					</div>
+				</div>
+				
+		</section>
+
+		<section class="large-12 columns" id="posiciones-wrapp">
+			<div class="large-12 columns posiciones-wrapp-content">
+				<div class="header-oficial">
+				 			<h3>GRUPO A</h3>
+				 			<h5>Estadisticas</h5>
+				 </div>
+		 		<div class="body-oficial">
+		 			<table>
+		 				<thead>
+		 					<tr>
+		 						<th></th>
+		 						<th>PJ</th>
+		 						<th>G</th>
+		 						<th>E</th>
+		 						<th>P</th>
+		 						<th>GF</th>
+		 						<th>GC</th>
+		 						<th>DIF</th>
+		 						<th>PTS</th>
+		 					</tr>
+		 				</thead>
+		 				<tbody>	 					
+
+		 				</tbody>
+		 			</table>
+		 		</div>
+
+			</div>			
+		</section>
+	
+	</script>
+{% endblock templates %}
