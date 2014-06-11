@@ -5,7 +5,7 @@ Quiniela.Views.Final = Backbone.View.extend({
 	events : {
 		"click .btnquiniela" : "quinielaHandler",
 		"click #group-list" : "groupHandler",
-		"click .btn-save" : "saveQnlHandler",
+		"click .btn-save" : "saveFinalHandler",
 		"click .btn-eliminatoria" : "showEliminatoriaHandler"
 	},
 
@@ -169,5 +169,55 @@ Quiniela.Views.Final = Backbone.View.extend({
 
 	render : function(){
 		this.$el.html(_.template($("#final-template").html()));
+	},
+
+	saveFinalHandler : function(e){
+
+		$(".loader-final").show();
+
+		if($("#SFA").children("input.team_input_a").val() === $("#SFB").children("input.team_input_a").val() 
+			){
+			$(".loader-final").hide();
+			$(".alert-warning").text("Debes elegir un ganador, tendras puntos solo por el acierto de tu equipo")
+			$(".alert-warning").fadeIn("slow").delay(3000).fadeOut("slow")
+		}else{
+			var currentCodqnl = localStorage.getItem("codigoqnl");
+
+			var listMatch = [];
+			var objMatch = {};
+			var mainMatch = {};
+
+			$.each($(".list-matches li"), function(c,v){
+				objMatch = {
+					goles : $(v).children("input.team_input_a").val(),
+					partido : $(v).attr("id"),
+					progress : true
+				}
+
+				listMatch.push(objMatch);
+			})
+
+			mainMatch.data = listMatch
+
+
+			var updateSemiQnl = new Quiniela.Models.QuinielaUpdate();
+
+			updateSemiQnl.urlRoot = "/api/quiniela/final/update?codigoqnl="+currentCodqnl;
+
+			updateSemiQnl.save(mainMatch,{
+				success :function(response){
+					$(".loader-final").hide();
+					$(".alert-success").text("Su Progreso en la Final se ha almacenado");
+					$(".alert-success").fadeIn("slow").delay(1000).fadeOut("fast");
+
+				},
+				error: function(err){
+					$(".alert-danger").text("Error en server");
+					$(".alert-danger").fadeIn("slow").delay(1000).fadeOut("fast");
+				}
+			})
+		}
+
+
 	}
 })

@@ -1,4 +1,5 @@
 from footballpools.models import FootballPool
+from ranking.models import Ranking, ViewRanking
 from footballpoolsusers.models import FootballPoolUser
 from knockout.models import Knockout, ViewOctavos
 from quarter.models import Quarter,  ViewCuartos
@@ -82,6 +83,15 @@ def group_position(request, group=""):
 		#return Response(position)
 		#jsonResponse = serializers.serialize("json", position)
 		return HttpResponse(json.dumps(position), content_type="application/json")
+		#return HttpResponse(position)
+
+@api_view(['GET'])
+def ranking(request, group=""):
+	if request.method == 'GET':
+		ranking = ViewRanking().getRanking()
+		#return Response(position)
+		#jsonResponse = serializers.serialize("json", position)
+		return HttpResponse(json.dumps(ranking), content_type="application/json")
 		#return HttpResponse(position)
 
 
@@ -237,13 +247,16 @@ def nueva_quiniela(request):
 
     partido1_final = Final(cod_qnl=quiniela_current.cod_qnl,cod_juego='FIN',cod_equipo='SFA',equipo='EQP',goles=0,clasificado='NA',puntuacion=0,ruta='',progress_final='')
     partido2_final = Final(cod_qnl=quiniela_current.cod_qnl,cod_juego='FIN',cod_equipo='SFB',equipo='EQP',goles=0,clasificado='NA',puntuacion=0,ruta='',progress_final='')
-    partido3_final = Final(cod_qnl=quiniela_current.cod_qnl,cod_juego='34L',cod_equipo='PSA',equipo='EQP',goles=0,clasificado='NA',puntuacion=0,ruta='',progress_final='')
-    partido4_final = Final(cod_qnl=quiniela_current.cod_qnl,cod_juego='34l',cod_equipo='PSB',equipo='EQP',goles=0,clasificado='NA',puntuacion=0,ruta='',progress_final='')
+    partido3_final = Final(cod_qnl=quiniela_current.cod_qnl,cod_juego='34L',cod_equipo='SFA',equipo='EQP',goles=0,clasificado='NA',puntuacion=0,ruta='',progress_final='')
+    partido4_final = Final(cod_qnl=quiniela_current.cod_qnl,cod_juego='34l',cod_equipo='SFB',equipo='EQP',goles=0,clasificado='NA',puntuacion=0,ruta='',progress_final='')
 
     partido1_final.save()
     partido2_final.save()
     partido3_final.save()
     partido4_final.save()
+
+    ranking = Ranking(cod_qnl=quiniela_current.cod_qnl,pts_goala=0,pts_goalb=0,pts_results=0,pts_winner=0,points_total=0)
+    ranking.save()
 
     #return HttpResponse("creando quiniela")
     return HttpResponse(json.dumps({"success" : "true","codqnl" : quiniela_current.cod_qnl}), content_type="application/json",status=200)
@@ -316,6 +329,20 @@ def cuartos_update(request):
 
 		cursor = connection.cursor()
 		cursor.execute("UPDATE semifinal_semifinal SET cod_qnl ='"+codigo_qnl+"',equipo=vw_semifinal_qnl.equipo FROM vw_semifinal_qnl WHERE vw_semifinal_qnl.cod_qnl=semifinal_semifinal.cod_qnl AND vw_semifinal_qnl.cod_juego = semifinal_semifinal.cod_equipo")
+		
+		return HttpResponse(json.dumps({"success" : "true"}), content_type="application/json",status=200)
+
+@require_http_methods(["GET", "POST"])
+@csrf_exempt
+def cuartos_update_team(request):
+	if request.method == 'POST':
+		codigo_qnl = request.REQUEST['codigoqnl']
+		equipo = request.REQUEST['equipo']
+		cod_juego = request.REQUEST['codjuego']
+
+
+		cursor = connection.cursor()
+		cursor.execute("UPDATE quarter_quarter SET cod_qnl ='"+codigo_qnl+"',equipo='"+equipo+"',progress_cuartos='true' WHERE quarter_quarter.cod_equipo='"+cod_juego+"'")
 		
 		return HttpResponse(json.dumps({"success" : "true"}), content_type="application/json",status=200)
 

@@ -16,6 +16,26 @@ Quiniela.Views.Dashboard = Backbone.View.extend({
 			$(e).find('div.rssBody').vTicker();
 		});
 
+
+		var ranking = new Quiniela.Models.Ranking();
+
+		ranking.fetch({
+			success : function(response){
+				$.each(response.attributes, function(c,v){
+					var count = c;
+					count++
+					var str = "<tr>"+
+					"<td><span><p>"+count+"</p></span>"+v.cod_qnl+"</td>"+
+					"<td>"+v.points+"</td>";
+					$("#ranking tbody").append(str)
+				})
+			},
+			error : function(err){
+				console.log(err)
+			}
+		})
+
+
 		this.options = attr;
 		//console.log(this.options._id)
 		//$(".titulo-team span").text(this.options._id)

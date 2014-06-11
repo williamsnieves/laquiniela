@@ -23,6 +23,7 @@ urlpatterns = patterns(
 	url(r'^quinielas/list/$', 'get_quinielas'),
 	url(r'^quiniela/octavos/update$', 'octavos_update'),
 	url(r'^quiniela/cuartos/update$', 'cuartos_update'),
+	url(r'^quiniela/cuartos/update/team$', 'cuartos_update_team'),
 	url(r'^quiniela/semis/update$', 'semifinal_update'),
 	url(r'^quiniela/final/update$', 'final_update'),
 	url(r'^quiniela/octavos/progress$', 'get_progressoctavos_qnl'),
@@ -31,5 +32,6 @@ urlpatterns = patterns(
 	url(r'^quiniela/final/progress$', 'get_progressfinal_qnl'),
 	url(r'^quiniela/invitation/$', 'invitations'),
 	url(r'^quiniela/invitation/save$', 'invitations_save'),
+	url(r'^quiniela/ranking$', 'ranking'),
 
 )

@@ -176,42 +176,56 @@ Quiniela.Views.Cuartos = Backbone.View.extend({
 	saveCtoHandler : function(e){
 
 		$(".loader-cuartos").show();
-		var currentCodqnl = localStorage.getItem("codigoqnl");
 
-		var listMatch = [];
-		var objMatch = {};
-		var mainMatch = {};
+		if($("#8B").children("input.team_input_a").val() === $("#8A").children("input.team_input_a").val() || 
+			$("#8D").children("input.team_input_a").val() === $("#8C").children("input.team_input_a").val() ||
+			$("#8E").children("input.team_input_a").val() === $("#8F").children("input.team_input_a").val() ||
+			$("#8G").children("input.team_input_a").val() === $("#8H").children("input.team_input_a").val() 
+			){
+			$(".loader-cuartos").hide();
+			$(".alert-warning").text("Debes elegir un ganador, tendras puntos solo por el acierto de tu equipo")
+			$(".alert-warning").fadeIn("slow").delay(3000).fadeOut("slow")
+		}else{
 
-		$.each($(".list-matches li"), function(c,v){
-			objMatch = {
-				goles : $(v).children("input.team_input_a").val(),
-				partido : $(v).attr("id"),
-				progress : true
-			}
+				var currentCodqnl = localStorage.getItem("codigoqnl");
 
-			listMatch.push(objMatch);
-		})
 
-		mainMatch.data = listMatch
 
-		console.log(mainMatch);
+				var listMatch = [];
+				var objMatch = {};
+				var mainMatch = {};
 
-		var updateCtoQnl = new Quiniela.Models.QuinielaUpdate();
+				$.each($(".list-matches li"), function(c,v){
+					objMatch = {
+						goles : $(v).children("input.team_input_a").val(),
+						partido : $(v).attr("id"),
+						progress : true
+					}
 
-		updateCtoQnl.urlRoot = "/api/quiniela/cuartos/update?codigoqnl="+currentCodqnl;
+					listMatch.push(objMatch);
+				})
 
-		updateCtoQnl.save(mainMatch,{
-			success :function(response){
-				$(".loader-cuartos").hide();
-				$(".alert-success").text("Su Progreso en cuartos se ha almacenado");
-				$(".alert-success").fadeIn("slow").delay(1000).fadeOut("fast");
+				mainMatch.data = listMatch
 
-			},
-			error: function(err){
-				console.log("error en el servidor")
-				console.log(err);
-			}
-		})
+				console.log(mainMatch);
+
+				var updateCtoQnl = new Quiniela.Models.QuinielaUpdate();
+
+				updateCtoQnl.urlRoot = "/api/quiniela/cuartos/update?codigoqnl="+currentCodqnl;
+
+				updateCtoQnl.save(mainMatch,{
+					success :function(response){
+						$(".loader-cuartos").hide();
+						$(".alert-success").text("Su Progreso en cuartos se ha almacenado");
+						$(".alert-success").fadeIn("slow").delay(1000).fadeOut("fast");
+
+					},
+					error: function(err){
+						console.log("error en el servidor")
+						console.log(err);
+					}
+				})
+		}
 
 
 	}

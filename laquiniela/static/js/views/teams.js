@@ -182,64 +182,64 @@ Quiniela.Views.Teams = Backbone.View.extend({
 							$(".full-section").css("background","url(../static/img/teams/grecia/grecia.jpg) 100% 100%")
 							break;
 						case "CRC":
-							$(".full-section").css("background","url(../static/img/teams/costarica/costarica.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/costarica/costarica.jpg) 100% 100%")
 							break;
 						case "ITA":
-							$(".full-section").css("background","url(../static/img/teams/italia/italia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/italia/italia.jpg) 100% 100%")
 							break;
 						case "ING":
-							$(".full-section").css("background","url(../static/img/teams/inglaterra/inglaterra.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/inglaterra/inglaterra.jpg) 100% 100%")
 							break;
 						case "URU":
-							$(".full-section").css("background","url(../static/img/teams/uruguay/uruguay.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/uruguay/uruguay.jpg) 100% 100%")
 							break;
 						case "SUI":
-							$(".full-section").css("background","url(../static/img/teams/suiza/suiza.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/suiza/suiza.jpg) 100% 100%")
 							break;
 						case "ECU":
-							$(".full-section").css("background","url(../static/img/teams/ecuador/ecuador.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/ecuador/ecuador.jpg) 100% 100%")
 							break;
 						case "HON":
-							$(".full-section").css("background","url(../static/img/teams/honduras/honduras.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/honduras/honduras.jpg) 100% 100%")
 							break
 						case "FRA":
-							$(".full-section").css("background","url(../static/img/teams/francia/francia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/francia/francia.jpg) 100% 100%")
 							break
 						case "ARG":
-							$(".full-section").css("background","url(../static/img/teams/argentina/argentina.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/argentina/argentina.jpg) 100% 100%")
 							break
 						case "IRN":
-							$(".full-section").css("background","url(../static/img/teams/iran/iran.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/iran/iran.jpg) 100% 100%")
 							break
 						case "BIH":
-							$(".full-section").css("background","url(../static/img/teams/bosnia/bosnia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/bosnia/bosnia.jpg) 100% 100%")
 							break
 						case "NIG":
-							$(".full-section").css("background","url(../static/img/teams/nigeria/nigeria.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/nigeria/nigeria.jpg) 100% 100%")
 							break
 						case "USA":
-							$(".full-section").css("background","url(../static/img/teams/usa/usa.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/usa/usa.jpg) 100% 100%")
 							break
 						case "ALE":
-							$(".full-section").css("background","url(../static/img/teams/alemania/alemania.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/alemania/alemania.jpg) 100% 100%")
 							break
 						case "GHA":
-							$(".full-section").css("background","url(../static/img/teams/ghana/ghana.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/ghana/ghana.jpg) 100% 100%")
 							break
 						case "POR":
-							$(".full-section").css("background","url(../static/img/teams/portugal/portugal.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/portugal/portugal.jpg) 100% 100%")
 							break
 						case "KOR":
-							$(".full-section").css("background","url(../static/img/teams/korea/korea.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/korea/korea.jpg) 100% 100%")
 							break
 						case "BEL":
-							$(".full-section").css("background","url(../static/img/teams/belgica/belgica.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/belgica/belgica.jpg) 100% 100%")
 							break
 						case "RUS":
-							$(".full-section").css("background","url(../static/img/teams/rusia/rusia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/rusia/rusia.jpg) 100% 100%")
 							break
 						case "AGL":
-							$(".full-section").css("background","url(../static/img/teams/argelia/argelia.png) 100% 100%")
+							$(".full-section").css("background","url(../static/img/teams/argelia/argelia.jpg) 100% 100%")
 							break
 					}
 				})

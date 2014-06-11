@@ -84,7 +84,8 @@ INSTALLED_APPS = (
     'calendars_knockout',
     'calendars_quarter',
     'calendars_semifinal',
-    'calendars_final',   
+    'calendars_final',
+    'ranking',
 )
 
 MIDDLEWARE_CLASSES = (

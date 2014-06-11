@@ -175,42 +175,51 @@ Quiniela.Views.Semis = Backbone.View.extend({
 	saveSemiHandler : function(e){
 
 		$(".loader-semis").show();
-		var currentCodqnl = localStorage.getItem("codigoqnl");
 
-		var listMatch = [];
-		var objMatch = {};
-		var mainMatch = {};
+		if($("#4A").children("input.team_input_a").val() === $("#4B").children("input.team_input_a").val() || 
+			$("#4C").children("input.team_input_a").val() === $("#4D").children("input.team_input_a").val() 
+			){
+			$(".loader-semis").hide();
+			$(".alert-warning").text("Debes elegir un ganador, tendras puntos solo por el acierto de tu equipo")
+			$(".alert-warning").fadeIn("slow").delay(3000).fadeOut("slow")
+		}else{
+			var currentCodqnl = localStorage.getItem("codigoqnl");
 
-		$.each($(".list-matches li"), function(c,v){
-			objMatch = {
-				goles : $(v).children("input.team_input_a").val(),
-				partido : $(v).attr("id"),
-				progress : true
-			}
+			var listMatch = [];
+			var objMatch = {};
+			var mainMatch = {};
 
-			listMatch.push(objMatch);
-		})
+			$.each($(".list-matches li"), function(c,v){
+				objMatch = {
+					goles : $(v).children("input.team_input_a").val(),
+					partido : $(v).attr("id"),
+					progress : true
+				}
 
-		mainMatch.data = listMatch
+				listMatch.push(objMatch);
+			})
 
-		console.log(mainMatch);
+			mainMatch.data = listMatch
 
-		var updateSemiQnl = new Quiniela.Models.QuinielaUpdate();
+			console.log(mainMatch);
 
-		updateSemiQnl.urlRoot = "/api/quiniela/semis/update?codigoqnl="+currentCodqnl;
+			var updateSemiQnl = new Quiniela.Models.QuinielaUpdate();
 
-		updateSemiQnl.save(mainMatch,{
-			success :function(response){
-				$(".loader-semis").hide();
-				$(".alert-success").text("Su Progreso en Semifinales se ha almacenado");
-				$(".alert-success").fadeIn("slow").delay(1000).fadeOut("fast");
+			updateSemiQnl.urlRoot = "/api/quiniela/semis/update?codigoqnl="+currentCodqnl;
 
-			},
-			error: function(err){
-				console.log("error en el servidor")
-				console.log(err);
-			}
-		})
+			updateSemiQnl.save(mainMatch,{
+				success :function(response){
+					$(".loader-semis").hide();
+					$(".alert-success").text("Su Progreso en Semifinales se ha almacenado");
+					$(".alert-success").fadeIn("slow").delay(1000).fadeOut("fast");
+
+				},
+				error: function(err){
+					console.log("error en el servidor")
+					console.log(err);
+				}
+			})
+		}
 
 
 	}

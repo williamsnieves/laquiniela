@@ -137,7 +137,7 @@ Quiniela.Views.Octavos = Backbone.View.extend({
 										break
 
 								}
-								var strqnl = "<li id='"+v.clas+"' data-flag='false'><div class='qnl_octavos_juego'>"+
+								var strqnl = "<li id='"+v.clas+"' class='"+v.juego+"' data-flag='false'><div class='qnl_octavos_juego'>"+
 											"<span class='title-estadio'>Juego</span>"+
 											"<span class='name-estadio'>"+v.juego+"</span>"+
 										"</div>"+
@@ -145,7 +145,7 @@ Quiniela.Views.Octavos = Backbone.View.extend({
 											"<span class='title-fecha'>Clasificado</span>"+
 											"<span class='fecha'>"+v.clas+"</span>"+
 										"</div>"+
-										"<input type='checkbox' name='team-a' class='check_input check_input_a'/>"+
+										"<input type='radio' data-juego='"+v.juego+"' name='team-a' class='check_input check_input_a'/>"+
 										"<img src='"+ruta+"' alt=''>"+
 										"<span class='team-a'>"+v.team+"</span>"+
 										"<input type='number' name='team-a' class='team_input team_input_a' max='9' min='0' value='0'/>"+
@@ -175,61 +175,334 @@ Quiniela.Views.Octavos = Backbone.View.extend({
 
 		$(".loader-octavos").show();
 
-		/*if(($("#1A").children("input.team_input_a").val() === $("#2B").children("input.team_input_a").val()) || 
-		($("#2D").children("input.team_input_a").val() === $("#1C").children("input.team_input_a").val()) || 
-		($("#2A").children("input.team_input_a").val() === $("#1B").children("input.team_input_a").val()) ||
-		($("#2C").children("input.team_input_a").val() === $("#1D").children("input.team_input_a").val()) ||
-		($("#1E").children("input.team_input_a").val() === $("#2F").children("input.team_input_a").val()) ||
-		($("#1G").children("input.team_input_a").val() === $("#2H").children("input.team_input_a").val()) ||
-		($("#1F").children("input.team_input_a").val() === $("#2E").children("input.team_input_a").val()) ||
-		($("#2G").children("input.team_input_a").val() === $("#1H").children("input.team_input_a").val()))  {*/
-		alert($("#1A").children("input.team_input_a").is(":checked"))
-		if($("#1A").children("input.team_input_a").is(":checked") || $("#2B").children("input.team_input_a").is(":checked")){
-				$("#1A").attr("data-flag","true");
-		}
-		if($("#1A").children("input.team_input_a").val() === $("#2B").children("input.team_input_a").val() || $("#1A").children("input.check_input_a").is(':checked') || $("#2B").children("input.check_input_a").is(':checked')){
+		/*if($("#1A").children("input.team_input_a").val() === $("#2B").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();
 			$("#1A").children("input.check_input_a").fadeIn("slow")
 			$("#2B").children("input.check_input_a").fadeIn("slow")
-			
-			
 
-			if($("#1A").attr("data-flag") == "true" || $("#2B").attr("data-flag") == "true"){
-				alert("putaaa")
-			}
-			$(".loader-octavos").hide();
 
-		}else if($("#2D").children("input.team_input_a").val() === $("#1C").children("input.team_input_a").val()){
-			$("#2D").children("input.check_input_a").fadeIn("slow")
-			$("#1C").children("input.check_input_a").fadeIn("slow")
-			$(".loader-octavos").hide();
-		}else if($("#2C").children("input.team_input_a").val() === $("#1D").children("input.team_input_a").val()){
-			$("#2C").children("input.check_input_a").fadeIn("slow")
-			$("#1D").children("input.check_input_a").fadeIn("slow")
-			$(".loader-octavos").hide();
-		}else if($("#1E").children("input.team_input_a").val() === $("#2F").children("input.team_input_a").val()){
-			$("#1E").children("input.check_input_a").fadeIn("slow")
-			$("#2F").children("input.check_input_a").fadeIn("slow")
-			$(".loader-octavos").hide();
-		}else if($("#1G").children("input.team_input_a").val() === $("#2H").children("input.team_input_a").val()){
-			$("#1G").children("input.check_input_a").fadeIn("slow")
-			$("#2H").children("input.check_input_a").fadeIn("slow")
-			$(".loader-octavos").hide();
-		}else if($("#1F").children("input.team_input_a").val() === $("#2E").children("input.team_input_a").val()){
-			$("#1F").children("input.check_input_a").fadeIn("slow")
-			$("#2E").children("input.check_input_a").fadeIn("slow")
-			$(".loader-octavos").hide();
-		}else if($("#2G").children("input.team_input_a").val() === $("#1H").children("input.team_input_a").val()){
-			$("#2G").children("input.check_input_a").fadeIn("slow")
-			$("#1H").children("input.check_input_a").fadeIn("slow")
-			$(".loader-octavos").hide();
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
 			
 		}
-		else{
-			var currentCodqnl = localStorage.getItem("codigoqnl");
 
+		if($("#2D").children("input.team_input_a").val() === $("#1C").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();
+			$("#2D").children("input.check_input_a").fadeIn("slow")
+			$("#1C").children("input.check_input_a").fadeIn("slow")
+
+
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
+			
+		}
+
+		if($("#2A").children("input.team_input_a").val() === $("#1B").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();
+			$("#2A").children("input.check_input_a").fadeIn("slow")
+			$("#1B").children("input.check_input_a").fadeIn("slow")
+
+
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
+			
+		}
+
+		if($("#2C").children("input.team_input_a").val() === $("#1D").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();	
+			$("#2C").children("input.check_input_a").fadeIn("slow")
+			$("#1D").children("input.check_input_a").fadeIn("slow")
+
+
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
+			
+		}
+
+		if($("#1E").children("input.team_input_a").val() === $("#2F").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();
+			$("#1E").children("input.check_input_a").fadeIn("slow")
+			$("#2F").children("input.check_input_a").fadeIn("slow")
+
+
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
+			
+		}
+
+		if($("#1G").children("input.team_input_a").val() === $("#2H").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();
+			$("#1G").children("input.check_input_a").fadeIn("slow")
+			$("#2H").children("input.check_input_a").fadeIn("slow")
+
+
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
+			
+		}
+
+		if($("#1F").children("input.team_input_a").val() === $("#2E").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();
+			$("#1F").children("input.check_input_a").fadeIn("slow")
+			$("#2E").children("input.check_input_a").fadeIn("slow")
+
+
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
+			
+		}
+
+		if($("#2G").children("input.team_input_a").val() === $("#1H").children("input.team_input_a").val()){
+			$(".loader-octavos").hide();
+			$("#2G").children("input.check_input_a").fadeIn("slow")
+			$("#1H").children("input.check_input_a").fadeIn("slow")
+
+
+			$('input.check_input_a').change(function() {
+		        if($(this).is(":checked")) {
+		            $(this).attr("checked", "checked");
+		            $(this).parent().attr("data-flag" , "true")
+		            $(this).parent().attr("data-complete" , "true")
+		            var equipo = $(this).siblings('span.team-a').text();
+		            var juego = $(this).attr('data-juego')
+		            var currentCodqnl = localStorage.getItem("codigoqnl");
+		            var updateCuartos = new Quiniela.Models.Cuartos();
+		            updateCuartos.urlRoot = "/api/quiniela/cuartos/update/team?codigoqnl="+currentCodqnl+"&equipo="+equipo+"&codjuego="+juego
+		            var $that = $(this);
+		            updateCuartos.save({},{
+		            	success : function(data){
+		            		console.log(data)
+		            		
+		            		$("li."+juego).fadeOut("slow")
+
+
+		            	},
+		            	error : function(response){
+		            		console.log(response)
+		            	}	
+		            })
+		        }else{
+		        	$(this).parent().attr("data-flag" , "false")
+		        	$(this).parent().attr("data-complete" , "false")
+		        }
+		        $('input.check_input_a').val($(this).is(':checked'));        
+		    });
+			
+		}*/
+
+		
+		/*$.each($("input.check_input_a:checked"),function(c,v){
+			console.log(v);
+		})*/
+
+		if($("#1A").children("input.team_input_a").val() === $("#2B").children("input.team_input_a").val() || 
+			$("#2D").children("input.team_input_a").val() === $("#1C").children("input.team_input_a").val() ||
+			$("#2A").children("input.team_input_a").val() === $("#1B").children("input.team_input_a").val() ||
+			$("#2C").children("input.team_input_a").val() === $("#1D").children("input.team_input_a").val() ||
+			$("#1E").children("input.team_input_a").val() === $("#2F").children("input.team_input_a").val() ||
+			$("#1G").children("input.team_input_a").val() === $("#2H").children("input.team_input_a").val() ||
+			$("#1F").children("input.team_input_a").val() === $("#2E").children("input.team_input_a").val() ||
+			$("#2G").children("input.team_input_a").val() === $("#1H").children("input.team_input_a").val() 
+			){
+			$(".loader-octavos").hide();
+			$(".alert-warning").text("Debes elegir un ganador, tendras puntos solo por el acierto de tu equipo")
+			$(".alert-warning").fadeIn("slow").delay(3000).fadeOut("slow")
+		}else{
+		
 			var listMatch = [];
 			var objMatch = {};
 			var mainMatch = {};
+
+			var currentCodqnl = localStorage.getItem("codigoqnl");
 
 			$.each($(".list-matches li"), function(c,v){
 				objMatch = {
@@ -262,5 +535,7 @@ Quiniela.Views.Octavos = Backbone.View.extend({
 				}
 			})
 		}
-	},
+		
+		
+	}
 })

@@ -10,6 +10,7 @@ Quiniela.Views.Curiosidades = Backbone.View.extend({
 
 		curiosidad.fetch({
 			success : function(data){
+				console.log(data)
 				$(".container-description h3").html(data.attributes[0].pais_sede+"<span>"+data.attributes[0].ano_mundial+"</span>")
 				$(".container-description .curiosidad-description").text(data.attributes[0].descripcion)
 
@@ -21,8 +22,14 @@ Quiniela.Views.Curiosidades = Backbone.View.extend({
 
 				$(".container-curiosity p").text(data.attributes[0].curiosidad)
 
-				$(".estadisticas-mundiales .goleador p").text(data.attributes[0].goleadores)
-				$(".estadisticas-mundiales .goles p").text(data.attributes[0].cant_goles)
+				$(".estadisticas-mundiales .goleador p").text(data.attributes[0].copa)
+				$(".estadisticas-mundiales .goles p").text(data.attributes[0].cant_equipos)
+				$(".estadisticas-mundiales .balonoro p").text(data.attributes[0].cant_partidos)
+
+				$(".wrapper-curiosity .cant-gol span").text(data.attributes[0].cant_goles)
+				$(".wrapper-curiosity .pro-gol span").text(data.attributes[0].promedio_goles)
+				$(".wrapper-curiosity .cant-golea span").text(data.attributes[0].max_goles)
+				$(".wrapper-curiosity .golea span").text(data.attributes[0].goleadores)
 			},
 			error : function(err){
 				console.log(err)
@@ -61,8 +68,14 @@ Quiniela.Views.Curiosidades = Backbone.View.extend({
 
 				$(".container-curiosity p").text(data.attributes[0].curiosidad)
 
-				$(".estadisticas-mundiales .goleador p").text(data.attributes[0].goleadores)
-				$(".estadisticas-mundiales .goles p").text(data.attributes[0].cant_goles)
+				$(".estadisticas-mundiales .goleador p").text(data.attributes[0].copa)
+				$(".estadisticas-mundiales .goles p").text(data.attributes[0].cant_equipos)
+				$(".estadisticas-mundiales .balonoro p").text(data.attributes[0].cant_partidos)
+
+				$(".wrapper-curiosity .cant-gol span").text(data.attributes[0].cant_goles)
+				$(".wrapper-curiosity .pro-gol span").text(data.attributes[0].promedio_goles)
+				$(".wrapper-curiosity .cant-golea span").text(data.attributes[0].max_goles)
+				$(".wrapper-curiosity .golea span").text(data.attributes[0].goleadores)
 			},
 			error : function(err){
 				console.log(err)
